@@ -37,3 +37,5 @@ cout<<"as a "<<profession<<"."<<" Then, "<< name<< " adopted a(n)"<< animal<<" n
 cout<<"both lived happily ever after!"<<endl;
 	return 0;
 }
+
+ 
