@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int main(){
+    double number1,number2;
+    cout<<"Enter number1 "<<endl; 
+    cin>>number1;
+    cout<<"Enter number2 "<<endl;
+    cin>>number2;
+    if(number1>10)
+    {
+        if(number2<100)
+        {
+            if(number2>number1)
+            {
+                cout<<"The number which is greater is number2: "<<number2<<endl;
+            }
+            else
+            {
+                cout<<"The number which is greater is number1: "<<numner1<<endl;
+            }
+        }      
+        else
+        {
+            cout<<"Number2 is not less-than 100 "<<endl;
+        }
+            }
+else{
+            cout<<"Number1 is not greater-than 10"<<endl;
+        }
+        return 0;
+}
