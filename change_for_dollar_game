@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+int pennies,nickels,dimes,quarters;
+const int penny_value=1;    
+const int nickel_value=5;
+const int dime_value=10;
+const int quarter=25;
+cout<<"Enter the number of pennies"<<endl;
+cin>>pennies;
+cout<<"Enter the number of nickels"<<endl;
+cin>>nickels;
+cout<<"Enter the number of dimes"<<endl;
+cin>>dimes;
+cout<<"Enter the number of quarters"<<endl;
+cin>>quarters;
+int total_value=(penny_value*pennies)+(nickel_value*nickels)+(dime_value*dimes)+(quarters*quarters);
+if(total_value==100)
+{
+    cout<<"congratulation! you won the game"<<endl;
+}
+else if(total_value>100)
+{
+    cout<<"You enter more than one dollar"<<endl;
+    }
+else 
+{
+    cout<<"you enter less than one dollar"<<endl;
+}
+return 0;
+}
