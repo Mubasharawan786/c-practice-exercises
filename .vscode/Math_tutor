@@ -1,0 +1,28 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+int main(){
+    //Variables
+    int answer, number1,number2,sum;
+    unsigned seed;
+    //Get the system time
+    seed=time(0);
+    //Seed the number generator
+    srand(seed);
+    //initalizing the variables
+    number1=rand();
+    number2=rand();
+    cout<<number1<<endl;
+    cout<<"+"<<number2<<endl;
+    cin>>answer;
+    sum=number1+number2;
+    //Checking the user's answer
+    if(answer==sum){
+        cout<<"Congratulations"<<endl;
+    }
+    else{
+        cout<<"The correct answer is "<<sum<<endl;
+    }
+    return 0;
+    }
