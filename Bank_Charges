@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//constant
+const int charges=10;//for holding mandatory monthly charges
+//variables
+int checks,balance,sum,extraCharge=0,fee;   
+cout<<"Enter the beginning balance of your account"<<endl;
+cin>>balance;
+// checking that balance is not negative
+ if(balance<0){
+    cout<<"The account is overdrawn"<<endl;
+}
+//if balance is less-than 400$ then add 15$ extra in the bank's service fee
+else if(balance<400){
+    extraCharge=15;
+}
+//checking if the balance is postive proceed otherwise exit the program
+if(balance>0){
+cout<<"Enter the number of checks"<<endl;
+cin>>checks;
+// if number of checks are between the range of 0 through 19 charge 10$ for each check
+if(checks<20&&checks>0){
+    fee=10;
+}
+// if number of checks are between the range of 20 through 39 charge 8$ for each check
+else if(checks>=20&&checks<=39){
+    fee=8;
+}
+// if number of checks are between the range of 40 through 59 charge 6$ for each check
+else if(checks>=40&&checks<=59){
+    fee=6;
+}
+// if number of checks are 60 or more than charge 4$ for each check
+else if(checks>=60){
+    fee=4;
+}
+//if user enter negative number for checks than display this message on the screen
+else {
+    cout<<"please enter only  positive numbers for checks"<<endl;
+}
+//sum is a variable of type int that hold the bank's service fee of the user
+sum=(fee*checks)+extraCharge+charges;
+// if check and balance is positive than display the bank's service fee on the screen
+if(checks>0&&balance>0){
+cout<<"Yor bank's service fee is $"<<sum<<endl;
+}
+}
+return 0;
+}
