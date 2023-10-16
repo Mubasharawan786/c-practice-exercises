@@ -1,0 +1,31 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int main() {
+    //varibles
+    double units,purchase,discount,retail=99;
+    cout<<"Enter the number of units sold"<<endl;
+    cin>>units;
+    if(units>=10&&units<=19){
+        discount=0.20;
+    }
+    else if(units>=20&&units<=49){
+        discount=0.30;
+    }
+    else if(units>=50&&units<=99){
+        discount=0.40;
+    }
+    else if(units>=100){
+        discount=0.50;
+    }
+    else if(units>0){
+    purchase=(1-discount)*units*retail;
+    cout<<"The cost of purchase is $"<<purchase<<endl;
+        
+    }
+    else {
+        cout<<"you enter the wrong quantity"<<endl;
+    cout<<"Make sure the number of units are greater than 0";
+    }    
+    return 0;
+}
