@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	string position1,position2,position3;
+	string name1,name2,name3;
+	float time1,time2,time3;
+	cout<<"Enter the names of three runner"<<endl;
+	cin>>name1>>name2>>name3;
+	cout<<"Enter the time each runner take to finish the race"<<endl;
+	cin>>time1>>time2>>time3; 
+if(time1>=1&&time2>=1&&time3>=1)
+{
+	if(time1<time2&&time1<time3)	
+	{
+		position1=name1;
+		if(time2<time3)
+		{
+			position2=name2;
+			position3=name3;	
+		}
+		else
+			{
+			position2=name3;
+			position3=name2;
+			}
+	}
+	else if(time2<time1&&time2<time3)
+	{
+		position1=name2;
+		if(time1<time3)
+		{
+			position2=name1;
+			position3=name3;
+			}	
+		else   
+		{
+		position2=name3;
+		position3=name1;
+		}	 
+	 }					
+	 else if(time3<time1&&time3<time2)
+	    { 
+	position1=name3;
+	if(time2<time1) 
+	{ 
+		position2=name2;
+		position3=name1;	
+		 }
+	else
+	{ 
+	position2=name1;
+	position3=name2;
+	}	 
+	}
+	cout<<1<<"st"<<"."<<position1<<endl;
+	cout<<2<<"nd"<<"."<<position2<<endl;
+	cout<<3<<"rd"<<"."<<position3<<endl;
+	}
+else
+	{
+	cout<<"Enter only positive numbers for time"<<endl;	
+	}
+	
+return 0;
+}
