@@ -1,0 +1,61 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	//Constants
+	const int Constant_Distance=500;
+	const int Maximum_Weight=20;
+	const int Minimum_Distance=10;
+	const int Maximum_Distance=3000;
+	//Variables
+	double charges,qotient=1;
+	double rate;
+	double weight;
+	double distance;
+	cout<<"Enter the weight of the package"<<endl;
+	cin>>weight;
+	if(weight>=1&&weight<=20)
+	{
+				cout<<"Enter the distance where you want your package to send "<<endl;
+		cin>>distance;
+		if(distance>=10&&distance<=3000)
+		{
+				if(weight<=2&&weight>=1)
+				{
+				rate=1.10;
+				}
+				else if(weight>2&&weight<=6)
+				{
+				rate=2.20;
+		        }		
+		        else if(weight>6&&weight<=10)
+				{
+				rate=3.70;
+	         	}
+				 else if(weight>10&&weight<=20)
+				{
+				rate=4.80;
+	         	}
+				 if(distance>Constant_Distance)		
+	         	{
+				 qotient=distance/Constant_Distance;
+				  }
+	      charges=rate*qotient;
+	      cout<<fixed<<showpoint<<setprecision(2);
+	      cout<<"Your shipping charges are $"<<charges<<endl;
+	      cout<<"Weight of your package="<<weight<<"kg"<<endl;
+	      cout<<"Shiping distance of your package="<<distance<<" miles"<<endl;
+		}	
+		else
+		{
+		cout<<"The maximum distance allowed for shipping is "<<Maximum_Distance<<" miles and the minimum distance allowed is "<<Minimum_Distance<<" miles"<<endl;		
+		
+		}	
+		
+	}
+	else{
+	cout<<"The maximum weight allowed is "<<Maximum_Weight<<"kg and "<<"the minimum weight allowed is 1kg"<<endl;	
+	}
+    return 0;
+}
