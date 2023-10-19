@@ -16,27 +16,45 @@ int main()
  cin>>date2;	
   cout<<"Third date"<<endl;
  cin>>date3;	
-  cout<<"Enter the vault heights in meters which are performed on "<<date1<<"\t"<<date2<<"\t"<<date3<<endl;
+  cout<<"Enter the vault heights in meters which are performed on "<<date1<<"/"<<date2<<"/"<<date3<<endl;
  cout<<"First height:"<<endl;
  cin>>height1;
  cout<<"Second height:"<<endl;
  cin>>height2;
  cout<<"Third height:"<<endl;
  cin>>height3;
+ //Testing  the vault heights to make it possibile that the heights are between the range of 2.0 through 5.0 meter 
  if((height1>=2&&height1<=5)&&(height2>=2&&height2<=5)&&(height3>=2&&height3<=5))
-		{
-			if(height2>height1||height3>height1)
-			if(height2>height1)
+	{
+		//This if block exicute if the First height enter by the user is greater-than the other two heights
+			if(height1>height2&&height1>height3)
 			{
-			temp=height1;
-			height1=height2;
-			height2=temp;	
+				cout<<"1.vault height is "<<height1<<" is performed on "<<date1<<endl;
+				cout<<"2.vault height is "<<height2<<" is performed on "<<date2<<endl;
+				cout<<"3.vault height is "<<height3<<" is performed on "<<date3<<endl;			
+			
 			}
-			cout<<"1.Vault height="<<height1<<"	is perfomed on "<<date1<<endl;
-			cout<<"2.Vault height="<<height2<<"	is perfomed on "<<date2<<endl;
-			cout<<"3.Vault height="<<height3<<"	is perfomed on "<<date3<<endl;
+			//This if block exicute if the Second height enter by the user is greater-than the other two heights
+			if(height2>height1&&height2>height3)
+			{
+				cout<<"1.vault height is "<<height2<<" is performed on "<<date2<<endl;
+				cout<<"2.vault height is "<<height1<<" is performed on "<<date1<<endl;
+				cout<<"3.vault height is "<<height3<<" is performed on "<<date3<<endl;			
+				
+			}
+			//This if block exicute if the Third height enter by the user is greater-than the other two heights
+	if(height3>height1&&height3>height2)
+			{
+				cout<<"1.vault height is "<<height3<<" is performed on "<<date3<<endl;
+				cout<<"2.vault height is "<<height2<<" is performed on "<<date2<<endl;
+				cout<<"3.vault height is "<<height1<<" is performed on "<<date1<<endl;			
+				
+			}
 	}
-else{
+	//This block only exicute when the heights enter by the user are not between the given range
+else
+	{
 	cout<<"The vault heights should be between the range of 2.0 through 5.0 meters"<<endl;
-}	
+	}	
+return 0;	
 }
