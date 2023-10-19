@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    //variables
+ double height1,height2,height3;
+ double temp;
+	string name;
+    string date1,date2,date3;
+ cout<<"Enter the name of the pole vaulter"<<endl;
+ cin>>name;   //for holding the name of the pole vaulter
+ cout<<"Enter the dates on which the "<<name<<" perfromed three best vaults"<<endl;
+ cout<<"First date:"<<endl;
+ cin>>date1;
+  cout<<"Second date"<<endl;
+ cin>>date2;	
+  cout<<"Third date"<<endl;
+ cin>>date3;	
+  cout<<"Enter the vault heights in meters which are performed on "<<date1<<"\t"<<date2<<"\t"<<date3<<endl;
+ cout<<"First height:"<<endl;
+ cin>>height1;
+ cout<<"Second height:"<<endl;
+ cin>>height2;
+ cout<<"Third height:"<<endl;
+ cin>>height3;
+ if((height1>=2&&height1<=5)&&(height2>=2&&height2<=5)&&(height3>=2&&height3<=5))
+		{
+			if(height2>height1||height3>height1)
+			if(height2>height1)
+			{
+			temp=height1;
+			height1=height2;
+			height2=temp;	
+			}
+			cout<<"1.Vault height="<<height1<<"	is perfomed on "<<date1<<endl;
+			cout<<"2.Vault height="<<height2<<"	is perfomed on "<<date2<<endl;
+			cout<<"3.Vault height="<<height3<<"	is perfomed on "<<date3<<endl;
+	}
+else{
+	cout<<"The vault heights should be between the range of 2.0 through 5.0 meters"<<endl;
+}	
+}
