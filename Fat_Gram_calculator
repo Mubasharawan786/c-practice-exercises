@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    //Constants
+    const int CIOGOF=9;//calories in one gram of fat 
+    //Variables
+    double percentage;//holding the percentage of calories that comes from fat
+    double fatCalories;//holding the calories comes from fat
+    double totalCalories;//holding the total calories of the food
+    double fatGrams;//holding the number of grams of fat present in the food 
+    cout<<"Enter the number of calories present in a food"<<endl;
+    cin>>totalCalories;
+    cout<<"Enter the fat grams present in a food"<<endl;
+    cin>>fatGrams;
+    //Checking that totalcalories and fatGrams are not zero
+    if(totalCalories>0&&fatGrams>0)
+    {
+      fatCalories=CIOGOF*fatGrams;
+      //Percentage of calories from fat can be calculated as
+       percentage=(fatCalories/totalCalories)*100;
+        cout<<"The percentage of calories that comes from fat is "<<percentage<<"%"<<endl;  
+        //if the number of calories  comes from fat is greater then the total calories of the food
+        // then this error message will display 
+				if(fatCalories>totalCalories)
+		{
+            cout<<"The calories or fat grams were incorrectly entered"<<endl;     
+        }
+        		        
+                if(percentage<30)
+                
+        {
+            cout<<"The food is less in fat"<<endl;     
+        }
+        
+    }
+    //if total calories or fat grams are less than one then this error message will display
+    else
+    {
+        cout<<"Make sure that number of calories present in the food and fat grams you entered are not less than 0"<<endl;
+    }
+return 0;
+}
