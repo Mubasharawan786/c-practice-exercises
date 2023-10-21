@@ -1,0 +1,55 @@
+#include<iomanip>
+#include<iostream>
+using namespace std;
+int main()
+{
+    //Constanst
+    const int air=1100;
+    const int water=4900;
+    const int steel=16400;
+    //Variables
+    double speed;//for holding speed of sound wave
+    double distance;//for holding distannce the wave travel
+    int selection;//holding the menu item number
+    double time;//holding the time which wave takes to travel the distance given by the user
+    int valid;//it is used to check that the user do not enter any other key from the keyboard other than menu number  
+    //Displaying the menu on the screen
+    cout<<"Select one medium from the menu "<<endl;
+    cout<<"1.Air"<<endl;
+    cout<<"2.Water"<<endl;
+    cout<<"3.Steal"<<endl;
+    cin>>selection;
+    switch(selection)
+    {
+        case 1:
+        speed=air;
+        valid=1;
+        break;
+        case 2:
+        valid=1;
+        speed=water;
+        break;
+        case 3:
+        valid=1;
+        speed=steel;
+        break;
+        default:
+        cout<<"This is not in the given menu so run the program again and select your medium"<<endl;
+    }
+        if(valid==1)
+        {
+    cout<<"Enter the distance which the sound wave travel in  the selected medium"<<endl;
+    cin>>distance;
+        if(distance>0)
+        {
+        time=distance/speed;
+        cout<<setprecision(4);
+        cout<<"The time sound wave takes to travel in the selected medium is "<<time<<" second(s)"<<endl;
+        }
+        else
+        {
+        cout<<"Distance should always be greater than 0"<<endl;
+ 
+        }
+        }
+}
