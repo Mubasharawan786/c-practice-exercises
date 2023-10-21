@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "personal_best": "cpp"
+        "personal_best": "cpp",
+        "spectral_analysis": "cpp"
     }
 }

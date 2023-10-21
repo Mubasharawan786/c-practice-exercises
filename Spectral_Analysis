@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    //Variables
+double wavelength;//for holding the wavelength of the electromagnetic waves
+cout<<"Enter the wavelength of the electromagnetic wave in meter"<<endl;
+cin>>wavelength;
+    //Checking the wavelength for gama rays 
+    if(wavelength<1e-11||wavelength<1*10^-11)
+    {
+    cout<<"Gamma Rays"<<endl;
+    }
+        //Checking the wavelength for x-rays   
+     else if((wavelength<1e-8&&wavelength>=1e-11)||(wavelength<1*10^-8&&wavelength>=1*10^-11))
+    {
+    cout<<"X-Rays"<<endl;
+    }
+    //Checking the wavelength for ultraviolet
+        else if((wavelength<4e-7&&wavelength>=1e-8)||(wavelength<4*10^-7&&wavelength>=1*10^-8))
+        {
+        cout<<"Ultraviolet"<<endl;
+        }
+        //Checking the wavelength for visible light
+         else if((wavelength<7e-7&&wavelength>=4e-7)||(wavelength<7*10^-7&&wavelength>=4*10^-7))
+        {
+        cout<<"Visible Light"<<endl;
+        }
+            //Checking the wavelength for infrared
+        else if((wavelength<1e-3&&wavelength>=7e-7)||(wavelength<1*10^-3&&wavelength>=7*10^-7))
+{
+    cout<<"Infrared"<<endl;
+}
+//Checking the wavelength for microwaves
+else if((wavelength<1e-2&&wavelength>=1e-3)||(wavelength<1*10^-2&&wavelength>=1*10^-3))
+{
+    cout<<"Micro Waves"<<endl;
+}
+//Checking the wavelength for radio waves 
+else if((wavelength>=1e-2)||(wavelength>=1*10^-2))
+{
+    cout<<"Radio Waves"<<endl;
+}
+return 0;
+}
