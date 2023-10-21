@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    //Constanst
+//Constanst
     const int air=1100;
     const int water=4900;
     const int steel=16400;
@@ -36,7 +36,7 @@ int main()
         default:
         cout<<"This is not in the given menu so run the program again and select your medium"<<endl;
     }
-        if(valid==1)
+             if(valid==1)
         {
     cout<<"Enter the distance which the sound wave travel in  the selected medium"<<endl;
     cin>>distance;

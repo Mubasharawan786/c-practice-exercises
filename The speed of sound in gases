@@ -1,0 +1,60 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+     //Constanst
+    const int air=331.5;
+    const int carbon_Dioxide=258;
+    const int hydrogen=1270;
+    const int helium=972;
+     //Variables
+    int speed;
+     double distance;//for holding distannce the wave travel
+    int selection;//holding the menu item number
+    double time;//holding the time which wave takes to travel the distance given by the user
+    int valid;//it is used to check that the user do not enter any other key from the keyboard other than menu number  
+    //Displaying the menu on the screen
+    cout<<"Select one of these for gases from the menu "<<endl;
+    cout<<"1.Carbon Dioxide"<<endl;
+    cout<<"2.Air"<<endl;
+    cout<<"3.Helium"<<endl;
+     cout<<"4.Hydrogen"<<endl;
+    cin>>selection;
+        switch(selection)
+    {
+        case 1:
+        speed=carbon_Dioxide;
+        valid=1;
+        break;
+        case 2:
+        valid=1;
+        speed=air;
+        break;
+        case 3:
+        valid=1;
+        speed=helium;
+        break;
+        case 4:
+        valid=1;
+        speed=hydrogen;
+        break;
+        default:
+        cout<<"This is not in the given menu so run the program again and select one gas from the menu by their number"<<endl;
+    }
+        if(valid==1)
+        {
+    cout<<"Enter the number of seconds which the sound wave takes to travel from their source to their destination"<<endl;
+    cin>>time;
+        if(time>0&&time<30)
+        {
+        distance=time*speed;
+                cout<<"The distance sound wave  travel from their source to their destination is "<<distance<<" meter(s)"<<endl;
+        }
+        else
+        {
+        cout<<"Time should always be greater than 0 and less the 30 seconds"<<endl;
+ 
+        }
+        }
+        return 0;
+}
