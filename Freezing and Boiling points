@@ -2,6 +2,50 @@
 using namespace std;
 int main()
 {
+    //Variables
+float temp;//for holding the user temperature
+cout<<"Enter a temperature."<<endl;
+cin>>temp;
+cout<<"At "<<temp<< " Fahrenheit Some substances either freez or boil"<<endl;
+if(temp<=32)
+{
+    cout<<"Freez:" <<endl;
+    cout<<"Water"<<endl;
+    if(temp<=-38)
+    {
+        cout<<"Mercury"<<endl;
+       if(temp<=-173)
+       {
+            cout<<"Ethyl alcohol"<<endl;
+            if(temp<=-362)
+            {
+               cout<<"Oxygen"<<endl;
+                         
+            }
+                                             }
+      
+                
+                
+     
+                                                    }         
+                                                                            }
+if(temp>=-306)
+{
+   cout<<"Boil:" <<endl;
+   cout<<"Oxygen"<<endl;
+   if(temp>=172){
+    cout<<"Ethyl alcohol"<<endl;
+        if(temp>=212){
+        cout<<"Water"<<endl;
+             if(temp>=676){
+                cout<<"Mercury"<<endl;
+             }   
+                
+                
+                      }
+                 }
+  
+   }
 
 return 0;    
 }
