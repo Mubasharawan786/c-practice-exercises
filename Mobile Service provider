@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+ int main()
+ {
+    double charges; //for holding user's call package charges
+    char choice;    //for holding user choice
+    float price;        //for holding package price
+        float number_of_minutes;    //for holding additional number of minutes user used
+    float additional_call_charges;  //for holding additional per minute call charges
+    //Displaying the monthly call package subscription menu 
+    cout<<" package A: For $39.99 per month 450 minutes are provided. Additional minutes are $0.45 per minutes"<<endl;
+    cout<<" package B: For $59.99 per month 900 minutes are provided. Additional minutes are $0.40 per minutes"<<endl;
+    cout<<" package C: For $69.99 per month unlimited minutes are provided."<<endl;
+    cout<<"Enter your package(A-B):"<<endl;
+    cin>>choice;
+    
+    if(choice=='A'||choice=='a'){
+        price=39.99;
+    	    additional_call_charges=0.45;
+    cout<<"Enter additional call minutes you used"<<endl;
+    cin>>number_of_minutes;
+	    charges=price+(number_of_minutes*additional_call_charges);
+    cout<<"Your due amount is $"<<charges<<endl;
+        }
+    else if(choice=='B'||choice=='b'){
+        price=59.99;
+        additional_call_charges=0.40;
+        cout<<"Enter additional call minutes you used"<<endl;
+    cin>>number_of_minutes;
+        charges=price+(number_of_minutes*additional_call_charges);
+    cout<<"Your due amount is $"<<charges<<endl;
+        }
+    else if(choice=='C'||choice=='c'){
+        price=69.99;
+        additional_call_charges=0;
+        cout<<"Enter additional call minutes you used"<<endl;
+    cin>>number_of_minutes;
+        charges=price+(number_of_minutes*additional_call_charges);
+    cout<<"Your due amount is $"<<charges<<endl;
+        }
+     else
+        {
+        cout<<"Invalid choice,please chose your call package from the subscription menu"<<endl;
+        }
+   return 0;
+
+ }
