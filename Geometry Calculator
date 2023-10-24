@@ -1,0 +1,99 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    //Constants
+    const double pi=3.14159;
+    //Variables
+    double base;		//for holding the base of triangle
+    double height;	//for holding the height of triangle
+    double length;	//for holding the length of rectangle
+    double width;	//for holding the width of rectangle
+    double Aoc;	//for holding the Area of Circle
+    double Aor;	//for holding the Area of Rectangle
+    double Aot;	//for holding the Area of Triangle
+    double radius;
+    short int choice;	//for holding user choice from the menu
+    //Displaying the manu for the user
+    cout<<"Geometry Calculator"<<endl;
+    cout<<"     1.Caluculate the Area of  Circle"<<endl;
+    cout<<"     2.Caluculate the Area of  Rectangle"<<endl;
+    cout<<"     3.Caluculate the Area of  Triangle"<<endl;
+    cout<<"     4.Quit  "<<endl;
+    cout<<"     Enter your choice(1-4):"<<endl;    
+    cin>>choice;
+    if(choice==1)
+    {
+        cout<<"Enter the radius of the circle"<<endl;
+        cin>>radius;
+        if(radius>0)
+        {
+            Aoc=pi*pow(radius,2);
+        cout<<"The Area of circle is "<<Aoc<<endl;
+        }
+        else
+        {
+                 cout<<"The negative value or zero is not allowed for circle's radius "<<endl;
+        }
+    }
+    else if(choice==2)
+    {
+        cout<<"Enter the length of the rectangle"<<endl;
+        cin>>length;
+        if(length>0)
+        {
+        cout<<"Enter the width of the rectangle"<<endl;
+        cin>>width;
+            if(width>0)
+            {
+        Aor=length*width;
+        cout<<"The Area of rectangle is "<<Aor<<endl;
+        }
+             else
+            {
+                cout<<"The negative value or zero is not allowed for rectangular width "<<endl;
+        }
+        }
+        else
+          {
+                cout<<"The negative value or zero is  not allowed for rectangular length "<<endl;
+        }
+        
+    }
+    else if(choice==3)
+    {
+        cout<<"Enter the length of the triangle's base"<<endl;
+        cin>>base;
+        if(base>0)
+        {
+            cout<<"Enter the height of the triangle"<<endl;
+        cin>>height;
+        if(height>0)
+        {
+        Aot=0.5*height*base;
+        cout<<"The Area of triangle is "<<Aot<<endl;
+        }
+        else
+        {
+            cout<<"The negative value or zero is not allowed for triangle's height "<<endl;
+        }
+        }
+        else
+        {
+               cout<<"The negative value or zero is not allowed for triangle's base "<<endl;
+  
+            }
+    }
+    else if(choice==4)
+    {
+        cout<<"The end"<<endl;
+
+     }   
+     else 
+    {
+        cout<<"This choice is not from the menu, choice should be in the range(1-4)  "<<endl;
+
+     } 
+return 0;     
+}
