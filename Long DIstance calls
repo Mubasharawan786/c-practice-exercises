@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    //Variables
+    float frictional_part;  //holding the number of minutes of the starting time
+    float rate; //holding the rate per minute
+    float Starting_Time;    //holding the starting time of the user's call
+    float number_of_minutes;    //holding number of minutes the user call
+    float charges;  //holding the call charges of the user
+    cout<<"Enter the starting time  of the call"<<endl;
+    cin>>Starting_Time;
+    cout<<"Enter the  number of minutes of the call"<<endl;
+    cin>>number_of_minutes;
+   frictional_part=Starting_Time - static_cast<int>(Starting_Time);
+   if(Starting_Time<=23.59&&frictional_part<=59)
+   {
+        if(Starting_Time>=0.0&&Starting_Time<=6.59)
+        {
+        rate=0.05;
+    }
+        if(Starting_Time>=7.0&&Starting_Time<=19.0)
+        {
+        rate=0.45;
+    }
+         if(Starting_Time>=19.01&&Starting_Time<=23.59)
+         {
+         rate=0.20;
+    }
+    charges=number_of_minutes*rate;
+    cout<<"Your call charges are $"<<charges<<endl;
+        }
+    else
+         {
+    cout<<"The time should not be greater than 23.59"<<endl;
+    }
+       
+    return 0;
+}
