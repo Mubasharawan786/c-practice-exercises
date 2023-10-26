@@ -3,12 +3,16 @@ using namespace std;
  int main()
  {
     //Constants
+    const float number_of_minutes_for_31=60*744;
+     const float number_of_minutes_for_30=60*720;
+     const float number_of_minutes_for_28=60*672;
     const float packageA=39.99;
     const float packageB=59.99;
     const float packageC=69.99;
     const float per_minute_call_charges_for_A=0.45;
     const float per_minute_call_charges_for_B=0.40;
     //Variables
+    string month;   //for hloding the name of the month
     double charges; //for holding user's call package charges
     char choice;    //for holding user choice
     float Bill_A;        //for holding Bill amount
@@ -23,41 +27,194 @@ using namespace std;
     cout<<" package C: For $69.99 per month unlimited minutes are provided."<<endl;
     cout<<"Enter your package(A-B):"<<endl;
     cin>>choice;
-    
-    if(choice=='A'||choice=='a'){
+    cout<<"Enter the month's name "<<endl;
+    cin>>month;
+    if((month=="January"||month=="March")||(month=="May"||month=="July")||(month=="August"||month=="October")||(month=="December"))
+    {
+        if(choice=='A'||choice=='a')
+        {
         
     	
-    cout<<"Enter additional call minutes you used"<<endl;
-    cin>>number_of_minutes;
-	    Bill_A=packageA+(number_of_minutes*per_minute_call_charges_for_A);
-    cout<<"Your due amount is $"<<Bill_A<<endl;
-    Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
-    saving=Bill_A-Bill_B;
-    cout<<"If you purchased package B you will save $"<<saving <<endl;
-    Bill_C=packageC;
-    saving=Bill_A-Bill_C;
-    cout<<"If you purchased package C you will save $"<<saving <<endl;
-        }
-    else if(choice=='B'||choice=='b'){
+    	cout<<"Enter additional call minutes you used"<<endl;
+    	cin>>number_of_minutes;
+	        if(number_of_minutes<=number_of_minutes_for_31)
+            {
+        	Bill_A=packageA+(number_of_minutes*per_minute_call_charges_for_A);
+    		cout<<"Your due amount is $"<<Bill_A<<endl;
+		    Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
+    		saving=Bill_A-Bill_B;
+    		cout<<"If you purchased package B you will save $"<<saving <<endl;
+    		Bill_C=packageC;
+    		saving=Bill_A-Bill_C;
+    		cout<<"If you purchased package C you will save $"<<saving <<endl;
+            }
+      		else
+        	{
+            cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_31<<" if your month has 31 days "<<endl;
+        	}       
+     	}
+    	else if(choice=='B'||choice=='b')
+		{
        
         cout<<"Enter additional call minutes you used"<<endl;
-    cin>>number_of_minutes;
-        Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
-    cout<<"Your due amount is $"<<Bill_B<<endl;
-    Bill_C=packageC;
-    saving=Bill_B-Bill_C;
-    cout<<"If you purchased package C you will save $"<<saving <<endl;
-        }
-    else if(choice=='C'||choice=='c'){
-                cout<<"Enter additional call minutes you used"<<endl;
-    cin>>number_of_minutes;
-        Bill_C=packageC;
-    cout<<"Your due amount is $"<<Bill_C<<endl;
-        }
-     else
+    	cin>>number_of_minutes;
+       		if(number_of_minutes<=number_of_minutes_for_31)
+            {
+        	Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
+    		cout<<"Your due amount is $"<<Bill_B<<endl;
+    		Bill_C=packageC;
+    		saving=Bill_B-Bill_C;
+    		cout<<"If you purchased package C you will save $"<<saving <<endl;
+            }
+      		else
+        	{
+            cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_31<<" if your month has 31 days "<<endl;
+        	}
+      	}
+    	else if(choice=='C'||choice=='c')
+		{
+         cout<<"Enter additional call minutes you used"<<endl;
+    	cin>>number_of_minutes;
+       		if(number_of_minutes<=number_of_minutes_for_31)
+            {
+        	Bill_C=packageC;
+    		cout<<"Your due amount is $"<<Bill_C<<endl;
+            }
+      		else
+        	{
+            cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_31<<" if your month has 31 days "<<endl;
+        	}
+     	}
+
+     	else
         {
         cout<<"Invalid choice,please chose your call package from the subscription menu"<<endl;
         }
+    }
+   //If your month has 30 days than this block execute
+    else if((month=="April"||month=="June")||(month=="September"||month=="November"))
+    {
+        if(choice=='A'||choice=='a')
+        {
+        cout<<"Enter additional call minutes you used"<<endl;
+    	cin>>number_of_minutes;
+	       if(number_of_minutes<=number_of_minutes_for_30)
+            {
+        	Bill_A=packageA+(number_of_minutes*per_minute_call_charges_for_A);
+    		cout<<"Your due amount is $"<<Bill_A<<endl;
+    		Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
+    		saving=Bill_A-Bill_B;
+    		cout<<"If you purchased package B you will save $"<<saving <<endl;
+    		Bill_C=packageC;
+    		saving=Bill_A-Bill_C;
+    		cout<<"If you purchased package C you will save $"<<saving <<endl;
+        	}
+      		else
+        	{
+            cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_30<<" if your month has 30 days "<<endl;
+        	}       
+     	}
+    else if(choice=='B'||choice=='b')
+	{
+    cout<<"Enter additional call minutes you used"<<endl;
+    cin>>number_of_minutes;
+      if(number_of_minutes<=number_of_minutes_for_30)
+      {
+    	Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
+    	cout<<"Your due amount is $"<<Bill_B<<endl;
+    	Bill_C=packageC;
+    	saving=Bill_B-Bill_C;
+    	cout<<"If you purchased package C you will save $"<<saving <<endl;
+      }
+      else
+      {
+      cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_30<<" if your month has 30 days "<<endl;
+      }
+    }
+    else if(choice=='C'||choice=='c')
+	{
+    cout<<"Enter additional call minutes you used"<<endl;
+    cin>>number_of_minutes;
+     	if(number_of_minutes<=number_of_minutes_for_30)
+        {
+        Bill_C=packageC;
+    	cout<<"Your due amount is $"<<Bill_C<<endl;
+        }
+      	else
+        {
+        cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_30<<" if your month has 30 days "<<endl;
+        }
+    }
+
+    else
+    {
+    cout<<"Invalid choice,please chose your call package from the subscription menu"<<endl;
+    }
+  }
+  // if your month has 28 days
+    else if(month=="February")
+    {
+        if(choice=='A'||choice=='a')
+        {
+        cout<<"Enter additional call minutes you used"<<endl;
+    	cin>>number_of_minutes;
+	        if(number_of_minutes<=number_of_minutes_for_28)
+            {
+        	Bill_A=packageA+(number_of_minutes*per_minute_call_charges_for_A);
+    		cout<<"Your due amount is $"<<Bill_A<<endl;
+    		Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
+    		saving=Bill_A-Bill_B;
+    		cout<<"If you purchased package B you will save $"<<saving <<endl;
+    		Bill_C=packageC;
+    		saving=Bill_A-Bill_C;
+    		cout<<"If you purchased package C you will save $"<<saving <<endl;
+        	}
+      		else
+        	{
+            cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_28<<" if your month has 28 days "<<endl;
+       		}	       
+     	}
+    	else if(choice=='B'||choice=='b')
+		{
+		 	cout<<"Enter additional call minutes you used"<<endl;
+    		cin>>number_of_minutes;
+       			if(number_of_minutes<=number_of_minutes_for_28)
+            	{
+        			Bill_B=packageB+(number_of_minutes*per_minute_call_charges_for_B);
+    				cout<<"Your due amount is $"<<Bill_B<<endl;
+  					Bill_C=packageC;
+    				saving=Bill_B-Bill_C;
+   					 cout<<"If you purchased package C you will save $"<<saving <<endl;
+          		}
+      			else
+        		{
+            		cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_28<<" if your month has 28 days "<<endl;
+        		}
+       }	
+    	else if(choice=='C'||choice=='c')
+		{
+           cout<<"Enter additional call minutes you used"<<endl;
+    	   cin>>number_of_minutes;
+       			if(number_of_minutes<=number_of_minutes_for_28)
+            	{
+       				 Bill_C=packageC;
+    				 cout<<"Your due amount is $"<<Bill_C<<endl;
+            	}
+      			else
+        		{
+            		cout<<"The number of call minutes should not be greater than "<<number_of_minutes_for_28<<" if your month has 28 days "<<endl;
+        		}
+        }
+
+       else
+        {
+        cout<<"Invalid choice,please chose your call package from the subscription menu"<<endl;
+        }
+    }
+    else
+        {
+            cout<<"You enter wrong spelling for the month's name"<<endl;
+            }
    return 0;
 
  }
