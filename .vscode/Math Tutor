@@ -1,0 +1,77 @@
+//math tutor
+#include<iostream>
+#include<cstdlib >
+#include<ctime>
+ using namespace std;
+int main()
+{
+ 	double num1,num2,answer,operation ;
+	short int choice; 
+   unsigned seed= time(0);
+   srand(seed);
+   num1= rand();
+   num2= rand();
+do
+{
+cout<<"Select the operation for your problem from the menu:"<<endl;
+cout<<"1.Addition"<<endl;
+cout<<"2.Subtraction"<<endl;
+cout<<"3.Multiplication"<<endl;
+cout<<"4.Division"<<endl;
+cout<<"5.Quit"<<endl;
+cin>>choice;
+switch(choice)
+{
+case 1:
+	cout<<num1<<"+"<<num2 <<endl ;
+	cin>>answer;
+	operation=num1+num2;
+	if(answer==operation)
+	cout<<"congratulations";
+	else
+	cout<<"The correct answer is: "<<operation<<endl;
+	break;
+	case 2:
+	 cout<<num1<<"-"<<num2 <<endl ;
+	cin>>answer;
+	operation=num1-num2;
+	if(answer==operation)
+	cout<<"congratulations";
+	else
+	cout<<"The correct answer is: "<<operation<<endl;
+	break;
+	case 3:
+	 cout<<num1<<"*"<<num2 <<endl ;
+	cin>>answer;
+		operation=num1*num2;
+	if(answer==operation)
+	cout<<"congratulations";
+	else
+	cout<<"The correct answer is: "<<operation<<endl;
+	break;
+	case 4:
+	 cout<<num1<<"/"<<num2 <<endl ;
+    cin>>answer;
+    	operation=num1/num2;
+	if(answer==operation)
+	cout<<"congratulations";
+	else
+	cout<<"The correct answer is: "<<operation<<endl;
+	break;
+	case 5:
+	cout<<"Program ends"; 
+	break;
+	default:
+	cout<<"Eror:Wrong choice"<<endl;
+	 cout<<"Select the operation for your problem from the menu:"<<endl;
+cout<<"1.Addition"<<endl;
+cout<<"2.Subtraction"<<endl;
+cout<<"3.Multiplication"<<endl;
+cout<<"4.Division"<<endl;
+cout<<"5.Quit"<<endl;
+cin>>choice;	
+}
+
+   }while(choice>5||choice<1);
+return 0;
+  }
