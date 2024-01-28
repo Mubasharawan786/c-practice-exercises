@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	double  percentage;
+    short int rooms=0;
+    short int floors=0 ;
+    int totalRooms=0;
+    int totalOccupied=0; 
+    short int occupied=0;
+    short int unoccupied=0; 
+   cout<<"How many floors the hotel has?"<<endl;
+    cin>>floors;
+ while(floors<1&&floors!=0 ) 
+ {  
+       
+    cout<<"Eror:Number of floors should not be less than 1 "<<endl;
+     cout<<"How many floors the hotel has?"<<endl;
+    cin>>floors;
+       
+ }
+ 
+ for(int i=1;i<=floors;i++)
+ {  
+   cout<<"Enter the number of rooms on floor "<<i<<endl;
+   cin>>rooms;
+  while(rooms<10){  
+    cout<<"Eror:Number of rooms should be less than 10 on each floor  "<<endl;
+     cout<<"Enter the number of rooms on floor "<<i<<endl;
+    cin>>rooms;
+     } 
+  
+   totalRooms+=rooms;
+   cout<<"How many of them are occupied"<<endl;
+   cin>>occupied;
+   totalOccupied+=occupied;
+  } 
+  unoccupied=totalRooms-totalOccupied ;
+ //percentage of occupied rooms
+percentage= (totalOccupied/totalRooms)*100;
+ cout<<"Total rooms in a hotel: "<<totalRooms<<endl;
+ cout<<"Occupied rooms in a hotel: "<<totalOccupied<<endl;
+  cout<<"Unoccupied rooms in a hotel: "<<unoccupied<<endl;
+  cout<<"Percentage of occupied rooms in a hotel is: "<<percentage<<endl;
+  
+  return 0
+  }
