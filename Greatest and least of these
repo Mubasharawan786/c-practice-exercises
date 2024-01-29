@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+ int number ;   //for holding the user input number
+ int smallest ;  //for holding the smallest number
+ int largest ;     //for holding largest number 
+ cout<<"Enter the series of integers and enter -99 to end the series"<<endl;
+ cin>>number;
+   smallest=largest=number;     //initializing the variables 
+ while(number!=-99) //While loop for checking the sentinal value which is -99
+ {
+ if(number>largest)     //if number is greater than largest than assign it to the variable name  largest  
+  {
+  largest=number;
+  }
+  if(number<smallest)        //if number is smaller  than the value of variable smallest than assign it  to the variable name  smallest 
+  {
+	
+    smallest=number;
+  }
+ 
+ cout<<"Enter a number to begin and   -99 to end the program"<<endl;
+ cin>>number;
+ }  
+ cout<<"Largest number you enter is:"<<largest<<endl;   //for displaying the largest number
+  cout<<"Smallest number you enter is:"<<smallest <<endl;   //for displaying the smallest number
+return 0;
+}

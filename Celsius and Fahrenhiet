@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+  float C ; //Celsius
+  float F ; //Fahrenheit
+ cout<<"Temprature in Celsius \t"<<"Temprature in Fahrenheit"<<endl;
+ for(C=0;C<=20;C++)
+{ 
+F=( ( 9/5)*C)+32;
+cout<<C<<" Celsius is equal to\t"<<F<<" Fahrenheit"<<endl ;
+}  
+return 0;
+}
