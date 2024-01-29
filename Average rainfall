@@ -1,0 +1,54 @@
+#include<iomanip>
+#include<iostream>
+using namespace std;
+int main() 
+{
+	short int years=0;
+	float rainFall=0;
+	float month[12];
+	float average=0;
+	float sum=0;
+	cout<<"Enter the number of years"<<endl;
+	cin>>years;
+	while(years<1&&years!=0)
+	{
+      cout<<"Eror:Number of years should not be less than 1"<<endl; 
+      cout<<"Enter the number of years"<<endl;
+      cin>>years;
+    }
+	for(int i=1;i<=years;i++)
+	{
+       for(int j=1;j<=12;j++)
+       {
+         cout<<"Enter the rain fall in inches for "<<j<<" month"<<endl;
+         cin>>month[j];
+         sum+=month[j];
+           while(rainFall<0)
+           {
+           	cout<<"Eror:Rain fall should not be negative"<<endl;
+            	for(int j=1;j<=12;j++)
+                {	
+			    cout<<"Enter the rain fall in inches for "<<j<<"month"<<endl;
+           	    cin>>month[j];
+           	     sum+=month[j];
+					 }
+            }
+		 }
+     
+		//Output 
+		for( int i=1;i<=years;i++) {
+                                    
+	 for(  int j=1;j<=12;j++) {
+                cout<<"  The rain fall in inches for "<<j<<" month is:"<<month[j]<<endl;
+          
+                    }
+		 average=sum/12;
+		 cout<<fixed<<showpoint<<setprecision(2);
+		 cout<<"The average rain fall for "<<i<<" year is:"<<average<<"inches"<<endl;
+             
+		 }
+	
+    
+	 }
+	return 0;
+ }
