@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	// i is a loop counter
+	int i;
+	// for taking the number of students 
+    int students;
+    //Declaring an array for storing student names
+    string name [students];
+
+    //prompt the user to take the number of students present in the class
+    cout<<"Enter the number of students in the class"<<endl;
+    cin>>students;
+    //input validating by apply the condition that student number would not be less than 1 and greater than 25
+    while(students<1||students>25)
+    {
+        cout<<"Eror:Number of students should not be less than 1 and greater than 25"<<endl;
+        cout<<"Enter the number of students in the class"<<endl;
+	    cin>>students;
+    }
+    //Input the name of each student in the class
+    for(  i=0;i< students;i++)
+    {
+     cout<<"Enter the name of "<<i+1 <<" student"<<endl;
+     cin>>name[i];
+    }
+    //Displaying the name of first and the last student in the line
+    cout<< name[0]<<" will be at the front of the line"<<endl;  
+      cout<< name[students-1]<<" will be at the end of the line"<<endl;
+}
