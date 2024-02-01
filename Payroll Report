@@ -1,0 +1,166 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	const short days=7;
+	int employee;
+	double grossPay;
+	double stateTax;
+	double federalTax;
+	double FICA_withholdings;
+	double totalgrossPay=0;
+	double totalstateTax=0;
+	double totalfederalTax=0;
+	double totalFICA_withholdings=0;
+	double netPay;
+	double TaxSum;
+    for(int i=1;i<days ;i++)
+    {
+    	cout<<"Enter the number of employee and if you enter 0 the loop terminates"<<endl;
+    	cin>>employee;
+    	while(employee<0)
+    	{
+    		cout<<"Error:Negative numbers are not allow"<<endl;
+			cout<<"Enter the number of employee and if you enter 0 the loop terminates"<<endl;
+    	    cin>>employee;
+		}
+    	if(employee==0)
+		{
+			break;
+		}
+    	
+    	cout<<"Enter the gross pay"<<endl;
+    	cin>>grossPay;
+    	while(grossPay<0)
+    	{
+    		cout<<"Error:Negative numbers are not allow"<<endl;
+    	    cout<<"Enter the gross pay"<<endl;
+    	    cin>>grossPay;
+    		
+		}
+    	totalgrossPay+=grossPay; 
+    	cout<<"Enter the state tax"<<endl;
+    	cin>>stateTax;
+    	while(stateTax<0||stateTax>grossPay)
+    	{
+              	if(stateTax>grossPay)
+              	{
+              	  cout<<"State tax would not be greater than gross pay"<<endl;	
+				  }
+				else  
+			    {
+				  cout<<"Error:Negative numbers are not allow "<<endl;
+        	     }
+                cout<<"Enter the state tax"<<endl;
+                cin>>stateTax;
+    	
+		}
+    	totalstateTax+=stateTax;
+    	cout<<"Enter the federal tax"<<endl;
+    	cin>>federalTax;
+    	while(federalTax<0||federalTax>grossPay)
+    	{
+               if(federalTax>grossPay)    		    
+    		    {
+    		    	cout<<"Federal tax would not be greater than gross pay"<<endl;	
+				}
+    		    
+    		    else
+    		    {
+    		    cout<<"Error:Negative numbers are not allow "<<endl;
+                	}
+				cout<<"Enter the federal tax"<<endl;
+             	cin>>federalTax;     		
+		}
+    	totalfederalTax+=federalTax; 
+    	cout<<"Enter the FICA withholdings"<<endl;
+    	cin>>FICA_withholdings;
+    	while(FICA_withholdings<0||FICA_withholdings>grossPay)
+    	{
+    		if(FICA_withholdings>grossPay)
+    		{
+    			cout<<"FICA withholdings would not be greater than gross pay"<<endl;
+			}
+			else
+			{
+			   cout<<"Error:Negative numbers are not allow"<<endl; 	
+			}
+    		cout<<"Enter the FICA withholdings"<<endl;
+    	    cin>>FICA_withholdings;
+    	}
+    	totalFICA_withholdings+=FICA_withholdings; 
+    	TaxSum= totalstateTax+totalfederalTax+totalFICA_withholdings ;
+		netPay=totalgrossPay-TaxSum;
+		while(TaxSum>grossPay)
+    	{
+    		cout<<"Error:Sum of state tax + federal tax + FICA withholding would not be greater than gross pay"<<endl;
+    		cout<<"Re-enter the data"<<endl;
+		    cout<<"Enter the gross pay"<<endl;
+    	    cin>>grossPay;
+    	    while(grossPay<0)
+    	    {
+    		      cout<<"Error:Negative numbers are not allow"<<endl;
+    	          cout<<"Enter the gross pay"<<endl;
+    	          cin>>grossPay;
+            }
+    	    totalgrossPay+=grossPay; 
+    	    cout<<"Enter the state tax"<<endl;
+    	    cin>>stateTax;
+    	    while(stateTax<0||stateTax>grossPay)
+    	    {
+              	if(stateTax>grossPay)
+              	{
+              	  cout<<"State tax would not be greater than gross pay"<<endl;	
+				  }
+				else  
+			    {
+				  cout<<"Error:Negative numbers are not allow "<<endl;
+        	     }
+                cout<<"Enter the state tax"<<endl;
+                cin>>stateTax;
+            }
+    	    totalstateTax+=stateTax;
+    	    cout<<"Enter the federal tax"<<endl;
+    	    cin>>federalTax;
+    	    while(federalTax<0||federalTax>grossPay)
+    	    {
+               if(federalTax>grossPay)    		    
+    		    {
+    		    	cout<<"Federal tax would not be greater than gross pay"<<endl;	
+				}
+    		    
+    		    else
+    		    {
+    		        cout<<"Error:Negative numbers are not allow "<<endl;
+                }
+				cout<<"Enter the federal tax"<<endl;
+             	cin>>federalTax;     		
+		    } 
+    	    totalfederalTax+=federalTax; 
+    	    cout<<"Enter the FICA withholdings"<<endl;
+    	    cin>>FICA_withholdings;
+    	    while(FICA_withholdings<0||FICA_withholdings>grossPay)
+    	    {
+    		     if(FICA_withholdings>grossPay)
+    		     {
+    			    cout<<"FICA withholdings would not be greater than gross pay"<<endl;
+			      }
+			     else
+		         {
+			        cout<<"Error:Negative numbers are not allow"<<endl; 	
+			      }
+    		     cout<<"Enter the FICA withholdings"<<endl;
+    	         cin>>FICA_withholdings;
+    	    }
+    	    totalFICA_withholdings+=FICA_withholdings; 
+        }
+        cout<<fixed<<showpoint<<setprecision(2);
+    	cout<<"Total for gross pay is "<<totalgrossPay<<endl;
+    	cout<<"Total for state tax is "<<totalstateTax<<endl;
+    	cout<<"Total for federal tax is "<<totalfederalTax<<endl;
+    	cout<<"Total for FICA withholdings is "<<totalFICA_withholdings<<endl;
+    	 cout<<"Net pay is "<< netPay<<endl;
+    }
+    return 0;
+}
