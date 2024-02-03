@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    const int  Bars=5;
+    double numasterik,sales[ Bars]; 
+    for(int i=0;i< Bars;i++)
+    {
+        cout<<"Enter today's sales for store "<<i+1<<endl;
+        cin>>sales[i];
+
+    }
+    
+    cout<<"SALES BAR CHART"<<endl;
+    cout<<"(Each * =$100)"<<endl;
+    for(int j=0;j<  Bars;j++)
+    {
+        cout<<"Store "<<j+1<<":" ;
+        numasterik=sales[j]/100;
+        for(int k=1;k<=numasterik;k++)
+        {
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
