@@ -1,0 +1,52 @@
+#include<iostream>
+#include<fstream>
+using namespace std; 
+int main()
+{
+	int year;
+    int population;
+	int numAsterik;
+     fstream outputFile;
+    outputFile.open("people.txt");
+    if(!outputFile.is_open())
+    {
+        cout<<"Error:The file is not opening";
+    }
+    else
+    {
+        cout<<"File open successfully"<<endl;
+    }
+    for(int i=1900;i<=2000;i+=20)
+    {
+     cout<<"Enter the population of prairieville during "<<i<<endl;
+     cin>>population;
+     population=( population+500)/1000*1000;
+     outputFile<<year<<""<<population;
+    }
+     outputFile.close( );
+     outputFile.open("people.txt");
+     if(!outputFile.is_open( ))
+     {
+        cout<<"Error:File is not opening"<<endl;
+     }
+     else
+     {
+        cout<<"File is  open successfully"<<endl;
+     }
+     cout<<"PRAIRIEVILLE POPULATION GROWTH"<<endl;
+     cout<<"(Each * represent 1,000 people)"<<endl;
+    while( outputFile>>year>>population)
+    {
+       
+       cout<<year<<'\t' ;
+      numAsterik= population/1000;
+        for(int j=0;j<numAsterik;j++)
+        {
+         cout<<"*";
+
+        }
+        cout<<endl;
+    }
+    outputFile.close();
+    return 0;
+}
