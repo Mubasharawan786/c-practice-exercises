@@ -1,0 +1,32 @@
+#include<iostream>
+using  namespace std;
+int main()
+{
+    double budget=0;
+    double expenses=0;
+    double expense=0;
+	char Addmore; 
+	double difer;
+    cout<<"Enter the amount that you have budgeted for a month"<<endl;
+      cin>>budget;
+   do
+    {
+        cout<<"Enter  your expense "<<endl;
+        cin>>expense ;
+        expenses+=expense ;
+        cout<<"Do you want to add more expenses (y==Yes and n==No)"<<endl;
+        cin>>Addmore;
+    } while(Addmore=='Y'||Addmore=='y'); 
+    cout<<"Budget: $"<<budget<<endl;
+	cout<<"Expenses: $"<<expenses<<endl;
+	difer=budget-expenses;
+	if(difer>=0)
+    { 
+       cout<<difer <<" is under the budget"<<endl;
+    }
+    else
+    {
+       cout<<-difer <<" is over the budget"<<endl;
+    }
+    return 0;
+}
