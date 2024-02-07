@@ -1,0 +1,32 @@
+#include <iostream> 
+using namespace std; 
+void Qualify()
+{
+	cout<<"You qualify for the card   "<<endl;
+	cout<<"Annual interest rate is 12%"<<endl;
+ } 
+void noQualify()
+{
+	cout<<"You do not qualify for the card   "<<endl;
+	cout<<"You do not complete the both given conditions"<<endl;
+	cout<<"1.You must have worked on your current job at least 2 year"<<endl;
+	cout<<"2.you must have  earned at least $17000 per year"<<endl;
+ }  
+ int main() 
+ { 
+ double salary; 
+ int years; 
+ cout << "This program will determine if you qualify\n"; 
+ cout << "for our credit card.\n"; 
+ cout << "What is your annual salary? "; 
+ cin >> salary; 
+ cout << "How many years have you worked at your "; 
+ cout << "current job? "; 
+ cin >> years; 
+ if (salary >= 17000.0 && years >= 2) 
+ Qualify(); 
+ else 
+ noQualify(); 
+ return 0; 
+ } 
+ 
