@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int main()
+ {
+    double wholesale=0;
+    double markup=0;
+    double retail=0;
+ double calculateRetail(double  ,double  );
+	do
+    {
+        cout<<"Enter the wholesale cost of the item"<<endl;
+        cin>>wholesale;
+        cout<<"Enter the markup percentage"<<endl;
+        cin>>markup;
+    }
+    while(wholesale<0||markup<0);
+     retail=calculateRetail(wholesale,markup);
+     cout<<"The retail price of the item is "<<retail<<endl;
+	 return 0;
+ }
+ double calculateRetail(double costprice,double mp)
+    {
+      double result;
+	  result=costprice+(costprice*(mp/100));
+      return result;
+    }
+    
