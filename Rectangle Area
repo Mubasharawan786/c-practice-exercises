@@ -1,28 +1,36 @@
 #include<iostream>
 using namespace std;
-double getLength ()
-    {
-     cout<<"Enter the rectangle's length"<<endl; 
-     cin>>length;   
-    return length; 
-    }
-    double getWidth  ()
-    {
-      cout<<"Enter the rectangle's width"<<endl; 
-     cin>>widthth;   
-    return width;
-    }
-int  main()
-{
-    double length;
-    double width;
-    double Area;
-    double getArea(getLength,getWidth)
-    {
-       Area=length*width;
-       return Area;
-    }
+
+double getLength() {
+    double L;
+    cout << "Enter the rectangle's length: ";
+    cin >> L;
+    return L;
 }
 
+double getWidth() {
+    double w;
+    cout << "Enter the rectangle's width: ";
+    cin >> w;
+    return w;
+}
 
+double getArea(double l, double w) {
+    double A = l * w;
+    return A;
+}
 
+void displayData(double length, double width, double area) {
+    cout << "Rectangle's length is " << length << endl;
+    cout << "Rectangle's width is " << width << endl;
+    cout << "Rectangle's Area is " << area << endl;
+}
+
+int main() {
+    double length = getLength();
+    double width = getWidth();
+    double area = getArea(length, width);
+    displayData(length, width, area);
+
+    return 0;
+}
