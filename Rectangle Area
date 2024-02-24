@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+double getLength ()
+    {
+     cout<<"Enter the rectangle's length"<<endl; 
+     cin>>length;   
+    return length; 
+    }
+    double getWidth  ()
+    {
+      cout<<"Enter the rectangle's width"<<endl; 
+     cin>>widthth;   
+    return width;
+    }
+int  main()
+{
+    double length;
+    double width;
+    double Area;
+    double getArea(getLength,getWidth)
+    {
+       Area=length*width;
+       return Area;
+    }
+}
+
+
+
