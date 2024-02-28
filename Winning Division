@@ -1,0 +1,55 @@
+#include<iostream>
+using namespace std;
+double getsales(string  );
+void findHighest(double  ,double  ,double  ,double  );
+int main()
+{
+double Northeast;
+string divisionName="Northeast";
+Northeast=getsales(divisionName);
+double Southeast;
+  divisionName="Southeast"; 
+Southeast=getsales(divisionName);
+double Northwest;
+divisionName="Northwest ";
+Northwest=getsales(divisionName);
+double Southwest; 
+divisionName="Southwest";
+Southwest=getsales(divisionName);
+findHighest(Northeast,Southeast,Northwest,Southwest);
+    return 0;
+}
+//defining the getSales function
+double getsales (string dN)
+{
+  double sales;
+  do  {
+     cout<<"Enter the quarterly sales figure of the "<<dN<<" division"<<endl;
+   cin>>sales;
+   if(sales<0.00)
+   cout<<"Invalid input.Sales cannot be less than $0.00";
+   } while(sales<0.00);
+    return sales;
+}
+//difining the findHighest function
+void findHighest(double NortheastSale,double SoutheastSale,double NorthwestSale,double SouthwestSale)
+{
+    double highestSale=NortheastSale;
+    string highestDivision="Northeast"; 
+    if(SoutheastSale>highestSale)
+    {
+        highestSale=SoutheastSale;
+        highestDivision="Southeast ";
+    } 
+    if(NorthwestSale>highestSale)
+     {
+        highestSale=NorthwestSale;
+        highestDivision="Northwest";
+     }
+    if(SouthwestSale>highestSale)
+    {
+        highestSale=SouthwestSale;
+     highestDivision="Southwest";
+    }
+    cout<<highestDivision<<" is the high grossing division  with the sales of  $"<<highestSale <<endl;
+}
