@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace  std;
+double kineticEnergy (float,float);
+int main()
+{
+  double K_E;  
+ float mass;
+ float velocity;
+ cout<<"Enter the mass of the object"<<endl;
+ cin>>mass;
+ cout<<"Enter the velocity of the moving object"<<endl;
+ cin>>velocity;
+ K_E=kineticEnergy(mass,velocity);
+cout<<"The kinetic energy of the  object is "<<K_E<<endl;
+    
+}
+// Defining the kineticEnergy function
+double kineticEnergy(float m,float v)
+{
+    double energy;
+    energy=0.5*m*v;
+    return energy;
+}
