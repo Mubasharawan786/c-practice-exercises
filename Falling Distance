@@ -1,0 +1,27 @@
+#include<iostream>
+#include<cmath> 
+#include<iomanip>
+using namespace std;
+double fallingDistance (double);
+  const float g=9.8;
+int main() 
+{
+  double distance  ;
+  double time;
+  // g is the gravitational constant 
+
+  for(int count=1;count<=10;count++)
+  {
+     time=count;
+    distance= fallingDistance( time );
+     cout<<fixed<<showpoint<<setprecision(2);
+    cout<<"Distance covered by the falling object after "<<count<< " second is "<<distance<<" meters"<<endl;      
+  }
+}
+// Defining the function name falling distnace 
+double fallingDistance(double t )
+{
+    double d;
+    d= 0.5*g*pow(t,2 );
+    return d;
+}
