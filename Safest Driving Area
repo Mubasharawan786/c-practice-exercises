@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+int getNumAccidents(string regionName)
+{
+   int accidents;    
+ cout<<"Enter the number of automobile accidents reported in "<<regionName<<" region of the city last  year"<<endl;
+  cin>>accidents;
+   
+   while(accidents<0)
+   {
+      cout<<"Invalid input.Number of accidents can never be negative"<<endl;   
+      cout<<"Enter the number of automobile accidents reported in "<<regionName<<" region of the city last  year"<<endl;
+      cin>>accidents; 
+    }
+    return accidents;
+}
+
+void findLowest(int n,int s,int e,int w,int c)
+{
+  int fewer=n;
+  string fewerName="North";
+  if(fewer> s)
+  {
+    fewer=s;
+    fewerName=" South";
+  }
+  if(fewer>e)
+  {
+    fewer=e;
+    fewerName="East";
+  }
+  if(fewer>w)
+  {
+    fewer=w;
+    fewerName="West";
+  }
+  if(fewer>c)
+  {
+    fewer=c;
+    fewerName="Central ";
+    cout<< fewerName <<"region of the city had the fewest reported automobile accidents last year which is "<<fewer<<endl; 
+  }
+}
+int main()
+{ 
+  string cityRegion="North" ;
+  int North= getNumAccidents(cityRegion);
+  cityRegion="South";
+  int South=getNumAccidents(cityRegion);
+  cityRegion="East";
+  int East=getNumAccidents(cityRegion);
+  cityRegion="West";
+  int West=getNumAccidents(cityRegion);
+  cityRegion="Central";
+  int Central=getNumAccidents(cityRegion);
+  findLowest(North,South,East,West,Central);
+}
