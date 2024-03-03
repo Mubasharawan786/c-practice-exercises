@@ -1,0 +1,22 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+double Celsius(double F)
+{
+ double C;
+ C=(0.5556 )*(F-32);
+ return C;
+} 
+ int main()
+{
+    double Fahrenheit_temprature;
+    double Celsius_temprature;
+   for(int i=0;i<=20;i++)
+   {
+    Fahrenheit_temprature=i;
+    Celsius_temprature=Celsius(Fahrenheit_temprature);
+    cout<<setprecision(3);
+    cout<<"Fahrenheit temprature   Celsius temprature"<<endl;
+    cout<<Fahrenheit_temprature<<"=\t"<<Celsius_temprature<<endl;
+   }
+}
