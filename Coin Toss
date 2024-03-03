@@ -1,0 +1,32 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+void coinToss(int tossNum)
+{
+    int randomNumber;
+    int maxValue=2,minValue=1;
+    unsigned seed=time(0);
+    srand(seed) ;
+    
+ 
+     for(int i=0;i<tossNum;i++)
+  {
+      randomNumber=(rand()%(maxValue-minValue+1)+minValue); 
+       if(randomNumber==1)
+    {
+     cout<<"Heads"<<endl;
+    }
+    if(randomNumber==2)
+    {
+     cout<<"Tails"<<endl;
+    }
+  }
+}
+int main()
+{
+  int tossNum;
+  cout<<"How many times  the coin should be tossed "<<endl;
+  cin>>tossNum;
+   coinToss(tossNum);
+}
