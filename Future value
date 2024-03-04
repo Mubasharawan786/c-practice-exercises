@@ -1,0 +1,32 @@
+ 
+ #include<iostream>
+#include<cmath>
+#include<iomanip>
+
+using namespace std;
+ /* p is the present amount
+ F is the future amount
+ t is the number of months 
+ i is the monthly interest rate */  
+double  futureValue(double P,double i,int t)
+{
+  double F;
+  F=P*pow((1+i),t);
+  return F;
+} 
+int main( )
+{
+    double  presentAmount;
+    double futureAmount;
+    double interestRate;
+    int months;
+    cout<<"Enter the account's  present amount    "<<endl;
+    cin>>presentAmount;
+    cout<<"Enter the number of months that you plan to let  the money sit in the account"<<endl;
+    cin>>months;
+    cout<<"Enter the monthly interest rate"<<endl;
+    cin>>interestRate;
+    futureAmount= futureValue(presentAmount,interestRate,months );
+    cout<<setprecision(2)<<fixed ;
+	cout<<"You have $"<<futureAmount<<" in your saving account  after"<<months<<" months"<<endl;
+}
