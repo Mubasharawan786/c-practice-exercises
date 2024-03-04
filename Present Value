@@ -1,0 +1,31 @@
+#include<iostream>
+#include<cmath>
+#include<iomanip>
+
+using namespace std;
+ /* p is the present amount
+ F is the future amount
+ n is the number of years
+ r is the annual interest rate */  
+double presentValue(double F,double r,int n)
+{
+  double p;
+  p=F/pow((1+r),n);
+  return p;
+} 
+int main( )
+{
+    double  todayamount;
+    double futureamount;
+    double interestRate;
+    int years;
+    cout<<"Enter the future value that you want in your account  "<<endl;
+    cin>>futureamount;
+    cout<<"Enter the number of years that you plan to let  the money sit in the account"<<endl;
+    cin>>years;
+    cout<<"Enter the anual interest rate"<<endl;
+    cin>>interestRate;
+    todayamount=presentValue(futureamount,interestRate,years);
+    cout<<setprecision(2)<<fixed ;
+	cout<<"You have to deposit $"<<todayamount<<" in your saving account to have $"<<futureamount<<" in your  account in the future"<<endl;
+}
