@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+   int i=1;
+void getScore(int &score)
+{
+ 
+  cout<<"Enter the "<<i <<" test score"<<endl;
+  cin>>score;
+  
+  while(score<0||score>100)
+  {
+    cout<<"Invalid input.Score should not be greater than 100 and less than 0"<<endl;
+    cout<<"Enter the "<<i <<" test score"<<endl;
+    cin>>score;
+     
+  }
+  i++;
+}
+int findLowest(int score1,int score2,int score3,int score4,int score5)
+{
+ int lowValue;
+ lowValue=score1;
+ if(lowValue>score2)
+ {
+    lowValue=score2;
+ }
+ if(lowValue>score3)
+ {
+    lowValue=score3;
+ }
+ if(lowValue>score4)
+ {
+    lowValue=score4;
+ }
+ if(lowValue>score5)
+ {
+    lowValue=score5;
+ }
+ return lowValue;
+}
+void calcAverage(int score1,int score2,int score3,int score4,int score5)
+{
+ double total;
+ double average;
+ total=score1+score2+score3+score4+score5;
+ total=total-findLowest( score1, score2, score3, score4,  score5);
+ average=total/4;
+ cout<<"The average of four highest  test score is "<<average<<endl;
+}
+
+int main()
+{
+  int score1 ;
+  getScore(score1);
+  int score2;
+  getScore(score2);
+  int score3;
+  getScore(score3);
+  int score4;
+  getScore(score4 );
+  int score5;
+  getScore(score5);
+  calcAverage(score1,score2,score3,score4,score5);
+}
