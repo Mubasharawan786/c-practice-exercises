@@ -1,0 +1,92 @@
+#include<iomanip>
+#include<iostream>
+using namespace std;
+//global variable for counting the number of judges
+int i=1;
+//Defination of the function  getJudgeData 
+void getJudgeData(double &judgeScore  ) 
+{
+    cout<<"Enter the score given by "<<i<<" judge"<<endl;
+    cin>>judgeScore;
+    while(judgeScore<0||judgeScore>10)
+    {
+        cout<<"Invalid input.Score should not be greater than 10 or less than 0 "<<endl;
+        cout<<"Enter the score given by "<<i<<" judge"<<endl;
+        cin>>judgeScore;
+    }
+    i++;
+}
+// Defination of the function findLowest
+int findLowest(double  judgeScore1,double  judgeScore2,double  judgeScore3,double  judgeScore4,double  judgeScore5)
+{ 
+    int low;
+    low= judgeScore1;
+    if(low> judgeScore2)
+    {
+        low= judgeScore2;
+    }
+    if(low> judgeScore3)
+    {
+        low= judgeScore3;
+    }
+    if(low> judgeScore4)
+    {
+        low= judgeScore4;
+    }
+    if(low> judgeScore5)
+    {
+        low= judgeScore5;
+    } 
+    return low;
+}
+// Defination of the function findHighest
+int findHighest(double  judgeScore1,double  judgeScore2,double  judgeScore3,double  judgeScore4,double  judgeScore5)
+{ 
+    int high;
+    high= judgeScore1;
+    if(high< judgeScore2)
+    {
+        high= judgeScore2;
+    }
+    if(high< judgeScore3)
+    {
+        high= judgeScore3;
+    }
+    if(high< judgeScore4)
+    {
+        high= judgeScore4;
+    }
+    if(high< judgeScore5)
+    {
+        high= judgeScore5;
+    } 
+    return high;
+}
+// Defination of the function calculateAverage 
+void calcAverage (double  judgeScore1,double  judgeScore2,double  judgeScore3,double  judgeScore4,double  judgeScore5)
+{
+    double total;
+    double hig_Low_Sum=  findHighest( judgeScore1, judgeScore2, judgeScore3, judgeScore4, judgeScore5) ;
+    hig_Low_Sum=hig_Low_Sum+ findLowest(  judgeScore1,  judgeScore2,  judgeScore3, judgeScore4, judgeScore5 );
+;
+    total= judgeScore1+ judgeScore2+ judgeScore3+ judgeScore4+ judgeScore5 ;
+    total=total-hig_Low_Sum;
+    double average;
+    average=total/3;
+    cout<<setprecision(3) <<endl;
+    cout<<"The average of three scores is "<<average <<" after dropping the highest and lowest score the performer get "<<endl;
+}
+int main()
+{
+ double  judgeScore1;
+getJudgeData( judgeScore1);
+ double  judgeScore2;
+getJudgeData( judgeScore2);
+ double  judgeScore3;
+ getJudgeData( judgeScore3);
+ double  judgeScore4;
+ getJudgeData( judgeScore4);
+ double  judgeScore5;
+getJudgeData( judgeScore5);
+  calcAverage ( judgeScore1,judgeScore2, judgeScore3, judgeScore4, judgeScore5);
+}
