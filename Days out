@@ -1,0 +1,55 @@
+#include<iostream>
+using namespace std; 
+int getEmployees();
+int getDays(int);
+double averageDays(int,int);
+int i;
+ int main()
+  { 
+   int employees;
+   employees=getEmployees();
+    int days;
+    days=getDays(employees);
+    double Average;
+    Average=averageDays(employees,days);
+    cout<<"Average number of days each employee absent is "<<Average<<endl;
+  } 
+  int getEmployees()
+  { 
+   int Number;
+   cout<<"Enter the number of employees of the company "<<endl;
+   cin>>Number;
+   while(Number<1)
+   {
+   	cout<<"Invalid input.Number of employees should not be less than 1"<<endl;
+   	cout<<"Enter the number of employees of the company"<<endl;
+   	cin>>Number;
+   }
+   return Number;
+  }
+  int getDays(int employees)
+  { 
+     int totalDays=0;
+    int days ;
+    for(  i=1;i<=employees;i++)
+    {
+      cout<<"Enter the number of days in which "<<i<<" employee is absent in the last year "<<endl;
+       cin>>days;
+	    while(days<0)
+    {
+        cout<<"Invalid input.The number of days should not be  a negative value "<<endl; 
+        cout<<"Enter the number of days in which "<<i<<" employee is absent in the last year "<<endl;
+        cin>>days;
+    }
+    totalDays =totalDays+days; 
+    }
+    
+    return totalDays;
+
+  }
+  double averageDays(int employees,int days)
+  {
+  	double average;
+  	average=days/employees;
+  	return average;
+  }
