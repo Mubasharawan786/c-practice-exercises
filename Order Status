@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+
+int spoolsNum ;
+  int stock;  
+  int choice;
+  int special ;
+  int charges;
+  double total;
+void spoolsInfo();
+ void displayInfo(int,int,int,int);
+ int main()
+{
+ spoolsInfo();
+ displayInfo(spoolsNum,stock,special,charges);
+}
+void spoolsInfo()
+{
+  cout<<"Enter the number of spools ordered"<<endl;
+  cin>>spoolsNum ;
+  while(spoolsNum<1)
+  {
+  cout<<"Invalid input.The number of spools ordered should not be less than 1"<<endl;
+  cout<<"Enter the number of spools ordered"<<endl;
+  cin>>spoolsNum ;
+  }
+  cout<<"Enter the number of spools in stock"<<endl;
+  cin>>stock;
+  while(stock<0)
+  {
+  cout<<"Invalid input.The number of spools in stock should not be less than 0"<<endl;  
+  cout<<"Enter the number of spools in stock"<<endl;
+  cin>>stock;
+  }
+  
+   cout<<"Enter the handling and shipping charges for spools "<<endl;
+    cin>>charges;
+   while(charges<0)
+   {
+    cout<<"invalid input.The handling and shipping charges should not be less than 0"<<endl;
+    cout<<"Enter the handling and shipping charges for spools "<<endl;
+    cin>>charges;
+   }
+  cout<<"Is there any special shipping and handling charges?"<<endl;
+  cout<<"1.yes"<<endl;
+  cout<<"2.No"<<endl;
+  cin>>choice;
+  if(choice==1)
+  {
+   cout<<"Enter the special charges for per spool"<<endl;
+   cin>>special;
+   while(special<0)
+   {
+   	cout<<"Invalid input.Special charges should not be less than 0"<<endl;
+   	cout<<"Enter the special charges for shipping and handling of spools"<<endl;
+   	cin>>special;
+   }
+   
+  }  
+}
+void displayInfo (int spoolsNum,int stock,int special,int charges=10 )
+{
+ if(spoolsNum>stock)
+ {
+   cout<<"The number of spools  ready to ship from current stock is "<<stock<<endl; 	
+ }
+ else
+ {
+ cout<<"The number of spools  ready to ship from current stock is "<<spoolsNum<<endl;	
+ }
+ 
+ 
+ if(spoolsNum>stock)
+ {
+ 	int backOrder=spoolsNum-stock;
+  cout<<"The number of spools on backorder "<<backOrder<<endl;
+ }
+ cout<<"Subtotal of the portion ready to ship is $"<<( spoolsNum*100) <<endl;
+ if(special>0)
+ {
+ 	total=( special*spoolsNum)+( spoolsNum*charges);
+ }
+ else
+ {
+ 	total= ( spoolsNum*charges);
+ }
+ cout<<"Total shipping and handling charges on the portion ready to ship is $"<<total<<endl;
+      
+}
