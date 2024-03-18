@@ -1,0 +1,95 @@
+#include<iostream>
+using namespace std;
+double calculCharges(int,double,double,double  );
+double calculCharges(double,double);
+int main()
+{
+ int choice;
+ int days;
+ double rate;
+ double medicationCharges;
+ double serviceCharges;
+ double roomCharges;
+ double totalCharges;
+ cout<<"The patient admitted as an"<<endl;
+ cout<<"1.in-patient(enter 1 if patient is still admitted in the hospital)"<<endl;
+ cout<<"2.out-patient(enter 2 if patient is discharge from the hospital)"<<endl;
+ cin>>choice;
+ switch(choice)
+   {
+     case 1:
+     totalCharges= calculCharges( days, rate, medicationCharges,serviceCharges); 
+     break;
+     case 2:
+     totalCharges= calculCharges( medicationCharges,serviceCharges); 
+     break;
+     Defaul:
+     cout<<"Invalid input.You can only enter 1 for in-patient and 2 for out-patient "<<endl;
+     cin>>choice; 
+    }
+ cout<<"Total charges of the patient is $"<<totalCharges<<endl;    
+}
+double calculCharges(int days,double rate,double medicationCharges,double serviceCharges) 
+{
+ double totalCharges=0;
+ double roomCharges;
+ cout<<"Enter the number of days spent in the hospital"<<endl;
+ cin>>days;
+ while(days<1)
+ {
+    cout<<"Invalid input.Number of days can never be less than 1"<<endl;
+    cout<<"Enter the number of days spent in the hospital"<<endl;
+    cin>>days;
+  }
+ cout<<"Enter the daily rate"<<endl;
+ cin>>rate;
+ while(rate<1)
+ {
+   cout<<"Invalid input.Number of days can never be less than 1"<<endl;
+   cout<<"Enter the daily rate"<<endl;
+   cin>>rate;    
+  }
+ roomCharges=rate*days;
+ totalCharges =totalCharges+roomCharges;
+ cout<<"Enter the hospital medication charges "<<endl;
+ cin>>medicationCharges;
+ while(medicationCharges<1)
+ {
+  cout<<"Invalid input.The medication charges should not be less than 1"<<endl;
+  cout<<"Enter the hospital medication charges "<<endl;
+ cin>>medicationCharges;
+ }
+ totalCharges+=medicationCharges;
+ cout<<"Enter the charges for  hospital services(lab tests, etc.)"<<endl;
+ cin>>serviceCharges;  
+ while(serviceCharges<1)
+ {
+  cout<<"Invalid input.The hospital service charges should not be less than 1"<<endl;
+  cout<<"Enter the charges for  hospital services(lab tests, etc.)"<<endl;
+  cin>>serviceCharges;  
+ }
+ totalCharges+=serviceCharges;
+ return totalCharges;
+}
+double calculCharges(double medicationCharges,double serviceCharges)
+{
+ double totalCharges=0; 
+ cout<<"Enter the charges for  hospital services(lab tests, etc.)"<<endl;
+ cin>>serviceCharges;  
+ while(serviceCharges<1)
+ {
+cout<<"Invalid input.The hospital service charges should not be less than 1"<<endl;
+cout<<"Enter the charges for  hospital services(lab tests, etc.)"<<endl;
+ cin>>serviceCharges;  
+ }
+ cout<<"Enter the hospital medication charges "<<endl;
+ cin>>medicationCharges;  
+ while(medicationCharges<1)
+ {
+  cout<<"invalid input.The medication charges should not be less than 1"<<endl;
+  cout<<"Enter the hospital medication charges "<<endl;
+  cin>>medicationCharges;  
+ }
+ totalCharges=medicationCharges+serviceCharges;
+ return totalCharges;  
+}
