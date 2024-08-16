@@ -1,0 +1,145 @@
+ #include <iostream>
+ #include<stdexcept>
+ using namespace std;
+class Array {
+	private:
+		int*array;
+		 
+		int size;
+		int count=0;
+    public:
+	       Array(int size)
+			{
+		 this ->size=size;
+		  array=new int(size);	
+		  for(int i=0;i<size;i++ )
+		  {
+		  	array[i]=0;
+       } 
+	    } 
+Array intersect(const Array& set1) {
+        Array set2(count);
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < set1.count; j++) {
+                if (array[i] == set1.array[j]) {
+                    set2.add(array[i]);
+                    break;
+                }
+            }
+        }
+        return set2;
+    }
+void reverse( ){
+	   	for(int i=0;i<count/2;i++)
+	{
+		 int temp;
+		 temp=array[i];
+		 array[i]=array[ ( count-1 )-i ];
+		 array[ ( count-1 )-i]=temp;
+	}
+	 
+}
+ void print() const 
+ {
+ 	for(int i=0;i<count;i++)
+   {
+ 	cout<<array[i] ;
+ 	if(i<count-1)
+	 cout<<"," ; 
+  } 
+} 
+void add(int value)
+{
+	//if the array is full resize it
+	if(size==count)
+	{
+		//create new array
+		int*New_array;
+		New_array=new int(size*2);
+		//copy all existing items
+		for(int i=0;i<count;i++)
+		New_array[i]= array[i];
+		//set items to this new array
+		array=New_array;
+	}
+	//add the given value at the end of the array
+	array[count++]=value;
+}
+void Remove(int index)
+{
+	//validate the index
+	if(index<0||index>=size)
+	throw runtime_error("It is out of range") ;
+//shift the items to the left
+for(int i=index;i<count;i++)
+array[i]=array[i+1];
+count--; 
+}
+int search(int value)
+{
+for(int i=0;i<count;i++) 
+if(	array[i]==value)
+ return i ;
+ 
+	  return -1;
+   }
+int max(){
+	int largestNumber=0; 
+	for(int i=0;i<count;i++)
+	{
+		if(array[i]>largestNumber)
+		{
+			largestNumber=array[i];
+		} 
+	}
+	return largestNumber;
+}
+void insertAt(int value, int index)  
+{
+    // Check if index is within bounds
+    if (index < 0 || index > count) {
+        throw std::out_of_range("Index is out of bounds");
+    }
+
+    // If array is full, resize it
+    if (count == size) {
+        int* new_array = new int[size * 2];
+        for (int i = 0; i < count; i++) {
+            new_array[i] = array[i];
+        }
+        delete[] array;
+        array = new_array;
+        size *= 2;
+    }
+
+    // Shift elements to the right to make space for the new element
+    for (int i = count; i > index; i--) {
+        array[i] = array[i - 1];
+    }
+
+    // Insert the new element
+    array[index] = value;
+
+    // Update the count of elements
+    count++;
+}
+
+ ~Array() {
+ delete []array;
+ } 
+ 
+ };
+
+ int main()
+ {
+ 	Array numbers1 (3);
+ 	  numbers1.add(50); 
+    numbers1.add(10);
+	numbers1.add(90);
+	 numbers1.print();
+	cout<<endl;
+	 numbers1.reverse();
+	 numbers1.insertAt(1,0);
+	 numbers1.print();
+	 return 0;
+ }
