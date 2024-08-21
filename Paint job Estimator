@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+int main()
+{ 
+    // 1 gallon of paint covers 110 square feet of wall space with 8 hours of labor
+    int rooms;
+    int const oneGallon=110;
+    int const laborCharges=25;
+    int gallons;
+    int hours;
+    double totalwallSpace=0;
+    double charges;
+    double wallSpace;
+    double price;
+    double cost;
+         double totalCost=0;
+    cout<<"Enter the number of rooms that are to be painted "<<endl;
+    cin>>rooms;
+    while(rooms<1)
+    {
+         cout<<"Invalid input.Number of rooms should not be less than 1"<<endl;
+         cout<<"Enter the number of rooms that are to be painted "<<endl;
+         cin>>rooms;
+    }
+    cout<<"Enter the price of the paint per gallon"<<endl; 
+    cin>> price ;
+    while(price<10)
+    {
+        cout<<"Invalid input.Price of the paint per gallon should not be less than $10 "<<endl;
+        cout<<"Enter the price of the paint per gallon"<<endl; 
+        cin>> price ;
+    }
+    for(int i=1;i<=rooms;i++)
+    {
+        cout<<"Enter the square feet of wall space in room No."<<i<<endl;
+        cin>>wallSpace;
+        while(wallSpace<0)
+        {
+            cout<<"Invalid input.The value for the wall space should not be negative"<<endl;
+            cout<<"Enter the square feet of wall space in room No."<<i<<endl;
+            cin>>wallSpace;
+        }
+        totalwallSpace=totalwallSpace+wallSpace;
+    }
+    gallons=totalwallSpace/oneGallon; 
+    cout<<gallons<<" gallons of paint is required"<<endl;
+    hours=gallons*8;
+    cout<<hours<<" hours of labor is required"<<endl;
+    cost=price*gallons;
+    cout<<"The cost of the paint is $"<<cost<<endl;
+   charges= hours*laborCharges; 
+   cout<<"The labour charges are $"<<charges<<endl;
+   totalCost=charges+cost;
+   cout<<"Total cost of the paint job is $"<<totalCost<<endl;
+   return 0;
+}
