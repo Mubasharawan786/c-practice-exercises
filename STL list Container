@@ -1,0 +1,17 @@
+#include<iostream>
+#include<list>
+  using namespace std; 
+int main()
+{
+ list<int>mylist;
+ list<int>::iterator iter;
+ for(int x=0;x<100;x+=10)
+ mylist.push_back(x);
+ for(iter=mylist.begin();iter!=mylist.end();iter++ )
+ cout<<*iter <<" ";
+ cout<<endl;
+ mylist.reverse();
+ for(iter=mylist.begin();iter!=mylist.end();iter++ )
+ cout<<*iter<<" " ;
+ return 0;
+};

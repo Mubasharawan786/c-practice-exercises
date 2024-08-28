@@ -1,0 +1,17 @@
+#include<iostream>
+#include<string>
+#include"LinkedList.h"
+using namespace std; 
+int main()
+{
+	string name= "Mubashar";
+LinkedList<double> list;
+list.appendNode(2.5);
+  list.insertNode(3);
+list.displayList();
+LinkedList<string>Slist;
+Slist.appendNode( name);
+cout <<endl;
+Slist.displayList();
+ return 0;
+};
