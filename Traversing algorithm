@@ -1,0 +1,12 @@
+#include<iostream>
+using namespace std;
+void traversing()
+ {
+ 	ListNode*nodePtr;
+	nodePtr=head;
+ while(nodeptr!=nullPtr)
+   {
+   	  cout<<nodePtr->value<<" ";
+	  nodePtr=nodePtr->next;
+    }  
+ }
