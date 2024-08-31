@@ -1,0 +1,13 @@
+~LinkedList()
+ {
+ 	ListNode*nodePtr;
+ 	ListNode*nextNode;
+ 	nodePtr=head;
+ 	while(nodePtr!=nullPtr)
+ 	{
+ 		nextNode=nodePtr->next;
+ 		delete nodePtr;
+ 		nodePtr=nextNode;
+ 		
+	 }
+ }
