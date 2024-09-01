@@ -9,6 +9,12 @@ int main()
  	mylist.push_front(9.65);
  	mylist.push_front(8.72);
  	mylist.push_front( 4.69);
+ 	cout<<"Before reversing  "<<endl;
     for(  obj= mylist.begin() ;obj!=mylist.end();obj++)
-    cout<<*obj <<" "<<endl;
+    cout<<*obj <<" " ;
+    cout<<endl;
+	cout<<"After reversing  "<<endl;
+    mylist.reverse();
+    for(  obj= mylist.begin() ;obj!=mylist.end();obj++)
+    cout<<*obj <<" " ;
  }
