@@ -1,0 +1,166 @@
+ #include<iostream>
+using namespace std;
+class LinkedList{ 
+    private:
+	struct ListNode{
+		int value;
+		ListNode *next;
+	};
+	ListNode*head;
+	public:
+	LinkedList(){
+		head=nullptr;
+	}
+	LinkedList(const LinkedList &copyList);	
+	void appendNode(int num);	
+	void insertNode(int num);
+    void  deleteNode(int num);
+    void displayNode()const;
+	~LinkedList() ;
+};
+
+ //appending a list at the end of the list
+ void LinkedList::appendNode(int num)
+ {
+ 	ListNode*newNode=new ListNode;
+ 	newNode->value=num;
+ 	newNode->next=nullptr;
+ 	ListNode*nodePtr=nullptr;
+ 	if(!head)
+ 	head=newNode;
+ 	else
+ 	 {
+ 		 nodePtr=head;
+ 		 while(nodePtr->next)
+ 		 {
+ 			 nodePtr=nodePtr->next;
+		    }
+	      nodePtr->next=newNode; 
+	    }
+    }  
+
+    // inserting a node in the middle of the list
+	void LinkedList::insertNode(int num)
+	{
+		 ListNode*newNode=new ListNode;
+		newNode->value=num;
+		newNode->next=nullptr;
+		ListNode*nodePtr=nullptr;
+		ListNode*previousNode=nullptr;
+	    if(!head)
+	    head=newNode;
+	    else
+	   {
+		 	nodePtr=head;
+		 	while(nodePtr!=nullptr&&nodePtr->value<num)
+		 	   {
+		 		 previousNode=nodePtr;
+		 		 nodePtr=nodePtr->next;
+			    }
+			if(previousNode==nullptr)
+			    {
+			    	head=newNode;
+			    	newNode->next=nodePtr;
+				}
+			else    
+			 {
+				 previousNode->next=newNode;
+			 	 newNode->next=nodePtr;
+			    }
+	    }
+	 } 
+	 
+	 //for deleting a specific node from the list
+	 void LinkedList::deleteNode(int num)
+	 {
+	 	ListNode*previousNode =nullptr;
+	 	 ListNode*nodePtr=nullptr;
+	    if(!head)
+	    return;
+	    if(head->value==num)
+	    {
+	     nodePtr=head->next;
+	    delete head;
+	    head=nodePtr;	
+		} 
+		 else
+	    {
+	    	nodePtr=head;
+	    	while(nodePtr!=nullptr && nodePtr->value!=num)
+            { 
+              previousNode=nodePtr;
+              nodePtr=nodePtr->next;	
+			 }
+			 if( nodePtr)
+			 {
+				 previousNode->next=nodePtr->next;
+			     delete nodePtr; 
+			    }	    
+			 	
+		}
+	 }
+	 
+	 //for displaying the list
+	 void LinkedList::displayNode()const
+	 {
+	 	 ListNode*nodePtr=head;
+	 	 while(nodePtr)   
+		 { 
+		     cout<<nodePtr->value<<" ";
+			 nodePtr=nodePtr->next;	
+		    }
+	    } 
+   
+   //copy constructor		 
+		 LinkedList::LinkedList( const LinkedList &copyList)
+{
+	if(copyList.head==nullptr)
+    {
+	 head=nullptr; 
+	 return;	
+	}
+	ListNode*newNode=new ListNode;
+	newNode->value=copyList.head->value;
+	newNode->next=nullptr;
+	head=newNode;
+	ListNode*nodePtr=head;
+	ListNode*copyPtr=copyList.head->next;
+	while(copyPtr!=nullptr)
+	{
+		ListNode*nextNode=new ListNode;
+		nextNode->value=copyPtr->value;
+		nextNode->next=nullptr;
+		nodePtr->next=nextNode;
+		nodePtr=nextNode;
+		copyPtr=copyPtr->next;
+	}
+}
+
+	 // For destroying the  list
+	 LinkedList::~LinkedList()
+	 {
+	 	 ListNode*nextNode=nullptr;
+	 	 ListNode*nodePtr=nullptr;
+	 	if(!head)
+	 	return;
+	 	nodePtr=head;
+	 	while(nodePtr!=nullptr)
+	 	{
+	 		nextNode=nodePtr->next;
+	 		delete nodePtr;
+	 		nodePtr=nextNode; 
+		 }
+		  
+		  
+	 }
+	  
+	  int main()
+	  {
+	  	LinkedList mylist;
+	  	mylist.appendNode(8);
+	  	mylist.insertNode(3);
+	  	mylist.deleteNode(8);
+	  	 LinkedList List2=mylist;
+		List2.displayNode();
+      		return 0;
+		} 
