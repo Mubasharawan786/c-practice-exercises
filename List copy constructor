@@ -156,11 +156,11 @@ class LinkedList{
 	  
 	  int main()
 	  {
-	  	LinkedList mylist;
-	  	mylist.appendNode(8);
-	  	mylist.insertNode(3);
-	  	mylist.deleteNode(8);
+	  	 LinkedList mylist;
+	  	 mylist.appendNode(8);
+	  	 mylist.insertNode(3);
+	  	 mylist.deleteNode(8);
 	  	 LinkedList List2=mylist;
-		List2.displayNode();
-      		return 0;
+		 List2.displayNode();
+         return 0;
 		} 
