@@ -16,7 +16,8 @@ class Array {
 		  {
 		  	array[i]=0;
        } 
-	    } 
+	    }
+
 Array intersect(const Array& set1) {
         Array set2(count);
         for (int i = 0; i < count; i++) {
@@ -29,6 +30,7 @@ Array intersect(const Array& set1) {
         }
         return set2;
     }
+
 void reverse( ){
 	   	for(int i=0;i<count/2;i++)
 	{
@@ -39,6 +41,7 @@ void reverse( ){
 	}
 	 
 }
+
  void print() const 
  {
  	for(int i=0;i<count;i++)
@@ -47,7 +50,8 @@ void reverse( ){
  	if(i<count-1)
 	 cout<<"," ; 
   } 
-} 
+}
+
 void add(int value)
 {
 	//if the array is full resize it
@@ -65,6 +69,7 @@ void add(int value)
 	//add the given value at the end of the array
 	array[count++]=value;
 }
+
 void Remove(int index)
 {
 	//validate the index
@@ -83,6 +88,7 @@ if(	array[i]==value)
  
 	  return -1;
    }
+
 int max(){
 	int largestNumber=0; 
 	for(int i=0;i<count;i++)
@@ -94,6 +100,7 @@ int max(){
 	}
 	return largestNumber;
 }
+
 void insertAt(int value, int index)  
 {
     // Check if index is within bounds
