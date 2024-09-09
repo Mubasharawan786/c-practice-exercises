@@ -1,0 +1,293 @@
+  #include<iostream>
+using namespace std;
+template<class T>
+class LinkedList{ 
+    private:
+	struct ListNode{
+		T value;
+		ListNode *next;
+	};
+	ListNode*head;
+	public:
+	LinkedList(){
+		head=nullptr;
+	}
+	LinkedList(const LinkedList<T> &copyList);	
+	void appendNode(T num);	
+	void insertNode(T num);
+	void insertNodeAt(T num,int index);
+	int search(T num);
+    void  deleteNode(T num);
+     void reverseList( );
+  void removeByPosition(int index);
+    void displayNode()const;
+	~LinkedList() ;
+};
+
+ //appending a list at the end of the list
+ template<class T>
+ void LinkedList<T>::appendNode(T num)
+ {
+ 	ListNode*newNode=new ListNode;
+ 	newNode->value=num;
+ 	newNode->next=nullptr;
+ 	ListNode*nodePtr=nullptr;
+ 	if(!head)
+ 	head=newNode;
+ 	else
+ 	 {
+ 		 nodePtr=head;
+ 		 while(nodePtr->next)
+ 		 {
+ 			 nodePtr=nodePtr->next;
+		    }
+	      nodePtr->next=newNode; 
+	    }
+    }  
+
+    // inserting a node in the middle of the list
+    template<class T>
+	void LinkedList<T>::insertNode(T num)
+	{
+		 ListNode*newNode=new ListNode;
+		newNode->value=num;
+		newNode->next=nullptr;
+		ListNode*nodePtr=nullptr;
+		ListNode*previousNode=nullptr;
+	    if(!head)
+	    head=newNode;
+	    else
+	   {
+		 	nodePtr=head;
+		 	while(nodePtr!=nullptr&&nodePtr->value<num)
+		 	   {
+		 		 previousNode=nodePtr;
+		 		 nodePtr=nodePtr->next;
+			    }
+			if(previousNode==nullptr)
+			    {
+			    	head=newNode;
+			    	newNode->next=nodePtr;
+				}
+			else    
+			 {
+				 previousNode->next=newNode;
+			 	 newNode->next=nodePtr;
+			    }
+	    }
+	 } 
+	 
+	 //for deleting a specific node from the list
+ template<class T>
+	 void LinkedList<T>::deleteNode( T num)
+	 {
+	 	ListNode*previousNode =nullptr;
+	 	 ListNode*nodePtr=nullptr;
+	    if(!head)
+	    return;
+	    if(head->value==num)
+	    {
+	     nodePtr=head->next;
+	    delete head;
+	    head=nodePtr;	
+		} 
+		 else
+	    {
+	    	nodePtr=head;
+	    	while(nodePtr!=nullptr && nodePtr->value!=num)
+            { 
+              previousNode=nodePtr;
+              nodePtr=nodePtr->next;	
+			 }
+			 if( nodePtr)
+			 {
+				 previousNode->next=nodePtr->next;
+			     delete nodePtr; 
+			    }	    
+			 	
+		}
+	 }
+	 
+	 //for displaying the list
+ template<class T>
+	 void LinkedList<T>::displayNode()const
+	 {
+	 	 ListNode*nodePtr=head;
+	 	 while(nodePtr)   
+		 { 
+		     cout<<nodePtr->value<<" ";
+			 nodePtr=nodePtr->next;	
+		    }
+	    } 
+
+//for reversing the list   
+ template<class T>
+   void LinkedList<T>:: reverseList( )
+{
+   ListNode*currentNode=head;
+   ListNode*previousNode=nullptr;
+   ListNode*nextNode ;
+   while(currentNode!=nullptr)
+   {
+   	 nextNode=currentNode->next;
+   	 currentNode->next=previousNode;
+   	 previousNode=currentNode;
+   	 currentNode= nextNode;
+		} 
+		head=previousNode;	
+} 
+
+//for searching the given value in the list
+ template<class T>
+int LinkedList<T>:: search(T num  )
+{
+	ListNode*nodePtr=head;
+	int i=0;
+	while(nodePtr!=nullptr )
+	{
+		if(nodePtr->value== num)
+		{
+		 return i;	
+		}
+		nodePtr=nodePtr->next;
+		i++;
+	}
+	 return -1;
+	  
+}
+
+   //copy constructor		 
+    template<class T>
+		 LinkedList<T>::LinkedList( const LinkedList<T> &copyList)
+{
+	if(copyList.head==nullptr)
+    {
+	 head=nullptr; 
+	 return;	
+	}
+	ListNode*newNode=new ListNode;
+	newNode->value=copyList.head->value;
+	newNode->next=nullptr;
+	head=newNode;
+	ListNode*nodePtr=head;
+	ListNode*copyPtr=copyList.head->next;
+	while(copyPtr!=nullptr)
+	{
+		ListNode*nextNode=new ListNode;
+		nextNode->value=copyPtr->value;
+		nextNode->next=nullptr;
+		nodePtr->next=nextNode;
+		nodePtr=nextNode;
+		copyPtr=copyPtr->next;
+	}
+}
+     
+	 // For destroying the  list
+	  template<class T>
+	 LinkedList<T>::~LinkedList()
+	 {
+	 	 ListNode*nextNode=nullptr;
+	 	 ListNode*nodePtr=nullptr;
+	 	if(!head)
+	 	return;
+	 	nodePtr=head;
+	 	while(nodePtr!=nullptr)
+	 	{
+	 		nextNode=nodePtr->next;
+	 		delete nodePtr;
+	 		nodePtr=nextNode; 
+		 }
+		  
+		  
+	 }
+	 
+	 //for inserting the value at a particular index in the list
+ template<class T>
+	 void LinkedList<T>:: insertNodeAt(T num,int  index)
+{
+	ListNode*nodePtr=nullptr;
+	ListNode*previousNode=nullptr;
+	ListNode*newNode=new ListNode;
+	newNode->value=num;
+	newNode->next=nullptr;
+	int i=0;
+	 if(index<i)
+	{
+		cout<<"index is out of range"<<endl;
+	  delete newNode;
+	  return;
+	}
+	if(index==i||!head)
+	{
+		 newNode->next=head;
+		 head=newNode;
+		 return;
+	}
+	else
+	{
+		nodePtr=head;
+		 while(nodePtr!=nullptr&&i!=index)
+	   {
+	   	    previousNode=nodePtr;
+			nodePtr=nodePtr->next;
+	   	 i++;
+		   }	
+		 	if(nodePtr==nullptr )
+		{
+			previousNode->next=newNode;
+		}
+		else
+		{
+		  newNode->next=nodePtr;   
+		previousNode->next=newNode;	
+		}
+	}
+	 
+}
+
+//for removing the node by index
+ template<class T>
+void LinkedList<T>::  removeByPosition( int  index)
+{
+	  ListNode*nodePtr=head;
+	  ListNode*previousNode ;
+	  previousNode=nullptr; 
+      int i=0;
+      if(index<0||head==nullptr)
+      {
+      	cout<<"Index is out of range"<<endl;
+      	return;
+	  }
+	  if(index==i )
+	  {
+	 head =head->next;
+	  	delete  nodePtr;
+	  return;
+	  }
+	  nodePtr=head; 
+	 while(nodePtr!=nullptr&&index!=i)
+	  {
+	    previousNode=nodePtr;
+		nodePtr=nodePtr->next;
+		i++; 	
+	  }
+	  if(nodePtr==nullptr)
+	  {
+	   cout<<"index is out of range"<<endl; 
+	   return;	
+	  }
+	  previousNode->next=nodePtr->next;
+	  delete nodePtr; 
+}
+
+	  
+	  int main()
+	  {
+	  	 LinkedList<int> mylist;
+	  	 mylist.appendNode( 1);
+	  	 mylist.insertNode(3);
+	  	 mylist.insertNode(2);
+		 mylist.insertNode(4 );
+		  mylist.displayNode();
+          return 0;
+		} 
