@@ -1,36 +1,45 @@
  #include<iostream>
+ #include<list>
  using namespace std;
  int main()
  {
- 	double  rainfall[12];
+ 	list<double>  rainfall ;
 	double totalRainFall;  
 	double averageRainFall;
- 	 for(int i=0;i< 12;i++ )
+	int months;
+	double value;
+	list<double>::iterator iter;
+	cout<<"How many months of data you want to enter"<<endl;
+	cin>>months;
+ 	 for(int i=0;i< months;i++ )
  	{
  	  cout<<"Enter the amount of rain fall for "<<i+1 <<" month"<<endl;
-      cin>>rainfall[i];
-	  totalRainFall+=rainfall[i];	
+      cin>>value;
+	  rainfall.push_back(value) ;
+	  totalRainFall+=value;	
 	 }
-     	double lowestRain=rainfall[0] ;
+     	double lowestRain=rainfall.front()  ;
      	int LRM=1 ;//lowest rain month
- 	    double highestRain=rainfall[0]  ;
+ 	    double highestRain=rainfall.front()  ;
 	    int HRM=1 ;//highest rain month
-
-	 for(int i=1;i<12;i++)
+        int i=1;
+	 for(iter=rainfall.begin();iter!=rainfall.end();iter++,i++)
 	 {
-	     if( lowestRain>rainfall[i ])
+	    
+		 if( lowestRain>*iter )
 	 	{
-	 	   lowestRain=rainfall[i  ]; 
-			 LRM=LRM+1;	
+	 	   lowestRain=*iter; 
+			 LRM= i;	
 		 } 
-		  if(highestRain<rainfall[i] )
+		  if(highestRain<*iter  )
 	 	 {
-	 	 	highestRain=rainfall[i];
-	 	 	HRM=HRM+1;
+	 	 	highestRain=*iter;
+	 	 	HRM=  i;
 		  }
+		   
 	 } 	 
-   cout<<"Total rainfall for the year is "<<totalRainFall<<endl;
-   averageRainFall=totalRainFall/12;
+   cout<<"Total rainfall for the " << months<<" month(s) is "<<totalRainFall<<endl;
+   averageRainFall=totalRainFall/months;
    cout<<"The average monthly rainfall is "<<averageRainFall<<endl;
    cout<<LRM<<" month has lowest rainfall which is "<<lowestRain<<endl;
    cout<<HRM<<" month has highest rainfall which is "<<highestRain<<endl;
