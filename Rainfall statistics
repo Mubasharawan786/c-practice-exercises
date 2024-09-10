@@ -1,0 +1,38 @@
+ #include<iostream>
+ using namespace std;
+ int main()
+ {
+ 	double  rainfall[12];
+	double totalRainFall;  
+	double averageRainFall;
+ 	 for(int i=0;i< 12;i++ )
+ 	{
+ 	  cout<<"Enter the amount of rain fall for "<<i+1 <<" month"<<endl;
+      cin>>rainfall[i];
+	  totalRainFall+=rainfall[i];	
+	 }
+     	double lowestRain=rainfall[0] ;
+     	int LRM=1 ;//lowest rain month
+ 	    double highestRain=rainfall[0]  ;
+	    int HRM=1 ;//highest rain month
+
+	 for(int i=1;i<12;i++)
+	 {
+	     if( lowestRain>rainfall[i ])
+	 	{
+	 	   lowestRain=rainfall[i  ]; 
+			 LRM=LRM+1;	
+		 } 
+		  if(highestRain<rainfall[i] )
+	 	 {
+	 	 	highestRain=rainfall[i];
+	 	 	HRM=HRM+1;
+		  }
+	 } 	 
+   cout<<"Total rainfall for the year is "<<totalRainFall<<endl;
+   averageRainFall=totalRainFall/12;
+   cout<<"The average monthly rainfall is "<<averageRainFall<<endl;
+   cout<<LRM<<" month has lowest rainfall which is "<<lowestRain<<endl;
+   cout<<HRM<<" month has highest rainfall which is "<<highestRain<<endl;
+   return 0;
+ }
