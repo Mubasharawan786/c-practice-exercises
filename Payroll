@@ -1,23 +1,35 @@
- #include<iostream>
+  #include<iostream>
  #include<list>
  using namespace std;
  int main()
  {
  	double HRs,PR;
- 	list<long int> empId ;
+ 	list<long int> empIds ;
 	 list<long int>::iterator iter_empId;  
-	 empId.push_back(5658845);
-	 empId.push_back( 4520125);
-	 empId.push_back(7895122) ;
-	 empId.push_back(8777541);
-	 empId.push_back(8451277);
-	 empId.push_back(1302850);
-	 empId.push_back( 7580489); 
-	list<int> hours ;
+	 string input;
+	 long int empId;
+	 cout<<"Enter the employee IDs(press enter without input to terminate)"<<endl;
+	 while(true)
+	 {
+       getline(cin,input );
+	   if(input.empty())
+	   {
+		break;
+	   }
+	   try{
+		empId=stol(input);
+		empIds.push_back(empId);
+	   }
+	   catch(invalid_argument&e )
+	   {
+         cout<<"Invalid input. please enter a valid integer "<<endl;
+	   }
+	 }
+ 	list<int> hours ;
     list<double >payRate ;
 	list<double >wages ;
 	list <double>::iterator iter_wages;
-	for(  iter_empId=empId.begin();iter_empId!=empId.end()  ;iter_empId++ )
+	for(  iter_empId=empIds.begin();iter_empId!=empIds.end()  ;iter_empId++ )
 	{
 		cout<<"Enter the number of hours worked by the employee  "<<*iter_empId <<endl;
 		cin>>HRs;
@@ -38,7 +50,7 @@
 		}
 		wages.push_back( HRs *PR);
 	 } 
-	 for(iter_empId=empId.begin(),iter_wages=wages.begin();iter_wages!=wages.end()&&iter_empId!=empId.end();iter_empId++,iter_wages++ )
+	 for(iter_empId=empIds.begin(),iter_wages=wages.begin();iter_wages!=wages.end()&&iter_empId!=empIdsk.end();iter_empId++,iter_wages++ )
 	 {
 	 	cout<<"Employee Id: "<<*iter_empId <<endl;
 	    cout<<"Gross pay: "<<*iter_wages <<endl;
