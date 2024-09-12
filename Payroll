@@ -1,36 +1,49 @@
  #include<iostream>
+ #include<list>
  using namespace std;
  int main()
  {
- 	long int empId[7]=  {5658845,  4520125 , 7895122,  8777541,  8451277,  1302850,  7580489} ;
-	int hours[7];
-    double payRate[7];
-	double wages[7];
-	for(int i=0;i<7 ;i++ )
+ 	double HRs,PR;
+ 	list<long int> empId ;
+	 list<long int>::iterator iter_empId;  
+	 empId.push_back(5658845);
+	 empId.push_back( 4520125);
+	 empId.push_back(7895122) ;
+	 empId.push_back(8777541);
+	 empId.push_back(8451277);
+	 empId.push_back(1302850);
+	 empId.push_back( 7580489); 
+	list<int> hours ;
+    list<double >payRate ;
+	list<double >wages ;
+	list <double>::iterator iter_wages;
+	for(  iter_empId=empId.begin();iter_empId!=empId.end()  ;iter_empId++ )
 	{
-		cout<<"Enter the number of hours worked by the employee  "<<empId[i]<<endl;
-		cin>>hours[i];
-		while(hours[i]<0)
+		cout<<"Enter the number of hours worked by the employee  "<<*iter_empId <<endl;
+		cin>>HRs;
+		hours.push_back(HRs) ;
+		while(HRs<0)
 		{
 	     cout<<"Number of hours should not be negative"<<endl;
-		 cout<<"Re-Enter the number of hours worked by the employee  "<<empId[i]<<endl;
-		 cin>>hours[i];
+		 cout<<"Re-Enter the number of hours worked by the employee  "<<*iter_empId <<endl;
+		 cin>>HRs;
 		}
-		cout<<"Enter the payRate of the employee "<<empId[i]<<endl;
-		cin>>payRate[i];
-		while(payRate[i]<15)
+		cout<<"Enter the payRate of the employee "<<*iter_empId <<endl;
+		cin>>PR;
+		while( PR <15)
 		{
 			cout<<"payRate should not be less than 15"<<endl;
-			cout<<"Re-Enter the payRate of the employee "<<empId[i]<<endl;
-		    cin>>payRate[i];
+			cout<<"Re-Enter the payRate of the employee "<<*iter_empId <<endl;
+		    cin>>PR;
 		}
-		wages[i]=hours[i]*payRate[i];
+		wages.push_back( HRs *PR);
 	 } 
-	 for(int i=0;i<7;i++ )
+	 for(iter_empId=empId.begin(),iter_wages=wages.begin();iter_wages!=wages.end()&&iter_empId!=empId.end();iter_empId++,iter_wages++ )
 	 {
-	 	cout<<"Employee Id: "<<empId[i]<<endl;
-	 	cout<<"Gross pay: "<<wages[i]<<endl;
-	    cout<<endl;
-	 }
-   return 0;	 
+	 	cout<<"Employee Id: "<<*iter_empId <<endl;
+	    cout<<"Gross pay: "<<*iter_wages <<endl;
+	    cout<<endl;	
+	  
+      }	  
+	 
  }
