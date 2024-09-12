@@ -1,0 +1,36 @@
+ #include<iostream>
+ using namespace std;
+ int main()
+ {
+ 	long int empId[7]=  {5658845,  4520125 , 7895122,  8777541,  8451277,  1302850,  7580489} ;
+	int hours[7];
+    double payRate[7];
+	double wages[7];
+	for(int i=0;i<7 ;i++ )
+	{
+		cout<<"Enter the number of hours worked by the employee  "<<empId[i]<<endl;
+		cin>>hours[i];
+		while(hours[i]<0)
+		{
+	     cout<<"Number of hours should not be negative"<<endl;
+		 cout<<"Re-Enter the number of hours worked by the employee  "<<empId[i]<<endl;
+		 cin>>hours[i];
+		}
+		cout<<"Enter the payRate of the employee "<<empId[i]<<endl;
+		cin>>payRate[i];
+		while(payRate[i]<15)
+		{
+			cout<<"payRate should not be less than 15"<<endl;
+			cout<<"Re-Enter the payRate of the employee "<<empId[i]<<endl;
+		    cin>>payRate[i];
+		}
+		wages[i]=hours[i]*payRate[i];
+	 } 
+	 for(int i=0;i<7;i++ )
+	 {
+	 	cout<<"Employee Id: "<<empId[i]<<endl;
+	 	cout<<"Gross pay: "<<wages[i]<<endl;
+	    cout<<endl;
+	 }
+   return 0;	 
+ }
