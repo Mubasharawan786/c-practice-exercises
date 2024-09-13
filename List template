@@ -282,6 +282,7 @@ void LinkedList<T>::  removeByPosition( int  index)
 }
 
 //for merging the array into the linked list  
+template<class T>
 void LinkedList<T>::mergeArray(T ara[],int size)
 {
   for(int i=0;i<size;i++)

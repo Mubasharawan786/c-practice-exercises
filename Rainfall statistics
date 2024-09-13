@@ -1,9 +1,10 @@
  #include<iostream>
+ #include<fstream>
  #include<list>
  using namespace std;
  int main()
  {
- 	list<double>  rainfall ;
+	list<double>  rainfall ;
 	double totalRainFall;  
 	double averageRainFall;
 	int months;
@@ -37,11 +38,50 @@
 	 	 	HRM=  i;
 		  }
 		   
-	 } 	 
+	 }
+	  
+	 //for storing the data of raain fall into the file from the linked list
+	 ofstream outputFile;
+	 outputFile.open("numbers.txt"); 
+     if(!outputFile)
+     {
+     	cout<<"Error :File is not opening "<<endl;
+	   return 1;
+	 }
+	 for(iter=rainfall.begin();iter!=rainfall.end();iter++)
+	 {
+	 	outputFile<<*iter<<endl; 
+	 }
+	 outputFile.close( );
+	 	 
    cout<<"Total rainfall for the " << months<<" month(s) is "<<totalRainFall<<endl;
    averageRainFall=totalRainFall/months;
    cout<<"The average monthly rainfall is "<<averageRainFall<<endl;
    cout<<LRM<<" month has lowest rainfall which is "<<lowestRain<<endl;
    cout<<HRM<<" month has highest rainfall which is "<<highestRain<<endl;
-   return 0;
- }
+    
+   
+   //for storing the rainfall data into the linked list from the file
+   ifstream inputFile;
+   inputFile.open("numbers.txt");
+   if(!inputFile)
+   {
+   	cout<<"Error:File is not opening !"<<endl;
+    return 1;
+   }
+   list<double>rainfallFromFile;
+     while( inputFile>>value)
+	 {
+	 	rainfallFromFile.push_back(value);
+	 }
+	 inputFile.close( );
+     
+     //For displaying the file data about rain fall
+      cout<<" Rain fall data read from file"<<endl;
+      i=1;
+     for(iter=rainfallFromFile.begin();iter!=rainfallFromFile.end();iter++,i++)
+     {
+      	cout<<i <<" month rain fall:"<<*iter<<endl;
+            
+ 	 }
+ } 
