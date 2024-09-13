@@ -1,0 +1,163 @@
+ 
+#ifndef NumberList_H
+#define  NumberList_H
+#include <iostream>
+using namespace std;
+class NumberList
+{
+  private:
+struct ListNode
+{
+  double value;
+  struct ListNode *next;
+};
+ListNode *head;
+public:
+NumberList( )
+{
+ head=nullptr;
+}
+~NumberList()
+{
+ } 
+ void appendNode(double);
+ void insertNode(double);
+ void deleteNode(double);
+ void displayList()const;
+ void mergeArray(double ara[],int size );
+};
+
+//for appending the list
+void NumberList::appendNode(double num)
+{
+  ListNode*newNode=new ListNode;
+  newNode->value=num;
+  newNode->next=nullptr;
+  ListNode*nodePtr;
+  if(!head)
+  head=newNode;
+else
+{
+nodePtr = head;
+while(nodePtr->next)
+{
+  
+  nodePtr=nodePtr->next;
+}
+nodePtr->next=newNode;
+}
+ } 
+
+ void NumberList::displayList()const
+ {
+  ListNode*nodePtr=head;
+   while(nodePtr)
+   {
+     cout<<nodePtr->value<<  endl;
+    nodePtr=nodePtr->next;
+   }
+  } 
+
+//for inserting the value in the list
+void NumberList::insertNode (double num) 
+ { 
+   ListNode *newNode; // A new node 
+  ListNode *nodePtr; // To traverse the list 
+   ListNode *previousNode = nullptr; // The previous node 
+  
+   // Allocate a new node and store num there. 
+   newNode = new ListNode; 
+   newNode->value = num; 
+   
+   // If there are no nodes in the list 
+   // make newNode the first node 
+   if (!head) 
+   { 
+   head = newNode; 
+   newNode->next = nullptr; 
+   } 
+  else // Otherwise, insert newNode 
+   { 
+   // Position nodePtr at the head of list. 
+   nodePtr = head; 
+   
+   // Initialize previousNode to nullptr. 
+   previousNode = nullptr; 
+   
+   // Skip all nodes whose value is less than num. 
+   while (nodePtr != nullptr && nodePtr->value <  num) 
+   { 
+   previousNode = nodePtr; 
+   nodePtr = nodePtr->next; 
+   } 
+  
+  // If the new node is to be the 1st in the list, 
+  // insert it before all other nodes. 
+  if (previousNode == nullptr) 
+  { 
+  head = newNode; 
+  newNode->next = nodePtr; 
+  } 
+ else // Otherwise insert after the previous node. 
+  { 
+  previousNode->next = newNode; 
+  newNode->next = nodePtr; 
+  } 
+  }  
+  } 
+  
+  //for deleting the value from the list
+void NumberList::deleteNode ( double num)
+{
+	ListNode*nodePtr;
+	ListNode* previousNode;
+	if(!head)
+	return;
+	if(head->value==num)
+	{
+	 nodePtr=head->next;
+	 delete head;
+	head=nodePtr;	
+	}
+	else
+	{
+		nodePtr=head;
+		while(nodePtr!=nullptr&&nodePtr->value!=num)
+		{
+			previousNode=nodePtr;
+			nodePtr=nodePtr->next;
+		}
+		if(nodePtr)
+		{
+			previousNode->next=nodePtr->next;
+			delete nodePtr; 
+		}
+	}
+} 
+
+//for merging the array in the linked list
+void NumberList::mergeArray(double ara[],int size)
+{
+	 for(int i=0;i<size;i++)
+	 insertNode(ara[i]);	
+	 
+	
+}
+ #endif
+
+ //driver program for testing the Number list class
+ #include<iostream>
+#include "NumberList.h"
+using namespace std;
+int main()
+{
+	NumberList mylist;
+	mylist.appendNode(0);
+	mylist.insertNode(1);
+	mylist.insertNode(2);
+	mylist.insertNode(3);
+	int size=3;
+	double numArray[size]={5,4,7 };
+	mylist. mergeArray( numArray ,size);
+	mylist.displayList();
+}
