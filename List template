@@ -18,9 +18,10 @@ class LinkedList{
 	void insertNodeAt(T num,int index);
 	int search(T num);
     void  deleteNode(T num);
-     void reverseList( );
-  void removeByPosition(int index);
-    void displayNode()const;
+    void reverseList( );
+    void removeByPosition(int index);
+    void mergeArray(T ara[],int size);
+	void displayNode()const;
 	~LinkedList() ;
 };
 
@@ -280,6 +281,12 @@ void LinkedList<T>::  removeByPosition( int  index)
 	  delete nodePtr; 
 }
 
+//for merging the array into the linked list  
+void LinkedList<T>::mergeArray(T ara[],int size)
+{
+  for(int i=0;i<size;i++)
+  insertNode(ara[i]);
+}
 	  
 	  int main()
 	  {
