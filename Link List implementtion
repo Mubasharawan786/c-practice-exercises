@@ -1,6 +1,7 @@
 #ifndef LINKEDLIST_H 
 #define LINKEDLIST_H 
 #include<iostream>
+#include<stdexcept>
  template<class T>
 class LinkedList 
 {
@@ -16,7 +17,8 @@ LinkedList( )
 {
  head=nullptr;
 }
-~LinkedList() { } 
+~LinkedList() ;
+ T& operator [](int index);
  void appendNode(T);
  void insertNode(T);
  void deleteNode(T);
@@ -123,8 +125,30 @@ void LinkedList<T>::deleteNode ( T num)
 		}
 	}
 }
+
+ template<class T>
+ T& LinkedList<T>::operator [] (int index)
+ {
+ 	ListNode*nodePtr=head;
+	int currentNode=0;
+	if(index<0)
+	{
+		throw std::out_of_range("Invalid index: index cannot be negative");
+	   }   
+	 while(nodePtr!=nullptr&&currentNode<index)
+	 {
+	 	nodePtr=nodePtr->next;
+	 	currentNode++; 
+	 }
+	 if(nodePtr==nullptr)
+	{
+		throw std::out_of_range("Invalid index: Index is out of range");
+	   }   
+	return nodePtr->value;
+ }
+ 
 template<class T> 
-LinkList<T>::~LinkList()
+LinkedList<T>::~LinkedList()
 {
 	ListNode*nodePtr;
 	ListNode*nextNode;
@@ -137,3 +161,15 @@ LinkList<T>::~LinkList()
 	}
 }
 #endif        
+
+#include<iostream>
+#include<stdexcept>
+using namespace std;
+int main() 
+{
+	LinkedList<int> mylist;
+	mylist.appendNode(1);
+	mylist.appendNode(2);
+	cout<<mylist[0]<<endl;
+	cout<<mylist[1];
+}
