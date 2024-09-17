@@ -23,7 +23,62 @@ LinkedList( )
  void insertNode(T);
  void deleteNode(T);
  void displayList()const;
+ void push_front(T);
+void push_back(T);
+T pop_front();
+T pop_back();
 };
+
+
+
+template<class T>
+void LinkedList<T>:: push_front(T value)
+{
+	ListNode*newNode= new ListNode;
+	newNode->value=value;
+	newNode->next=head;
+	head=newNode;
+}
+
+template<class T>
+void LinkedList<T>::push_back(T value)
+{
+    ListNode*newNode=new ListNode;
+	newNode->value=value;
+	newNode->next=nullptr;
+	if(head==nullptr)
+	head=newNode;
+    ListNode*nodePtr=head;
+	while(nodePtr->next)
+	{
+		nodePtr=nodePtr->next;
+		}	
+	nodePtr->next=newNode;	
+}
+
+template<class T>
+T LinkedList<T>::pop_front()
+ {
+   LinkedList*nodePtr=head->next;
+   delete head;
+   head=nodePtr;
+ }
+ 
+template<class T>
+T LinkedList<T>::pop_back()
+ {
+   LinkedList*previousNode=nullptr;
+   LinkedList*nodePtr=head;
+   while(nodePtr!=nullptr)
+   {
+    previousNode=nodePtr;
+   	nodePtr=nodePtr->next;
+   }
+   previousNode->next=nullptr;
+   delete nodePtr;
+   nodePtr=previousNode;
+  }
+ 
 template<class T>
 void LinkedList<T>::appendNode(T num)
 {
@@ -170,6 +225,8 @@ int main()
 	LinkedList<int> mylist;
 	mylist.appendNode(1);
 	mylist.appendNode(2);
-	cout<<mylist[0]<<endl;
-	cout<<mylist[1];
+ 	mylist.push_back(3);
+	mylist.push_front(0);
+	mylist.displayList();
+	
 }
