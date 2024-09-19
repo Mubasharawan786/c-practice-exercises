@@ -1,0 +1,87 @@
+#include <iostream>
+#include<IntStack.h>
+using namespace std;
+//constructor
+IntStack::IntStack(int size)
+{
+  stackArray=new int[size]);
+  stackSize=size;
+  top=-1;
+}
+
+//copy constructor
+IntStack::IntStack(const IntStack &obj)
+{
+   if(obj.stackSize>0)
+   {
+    stackArray=new int[obj.stackSize];
+   }
+   else
+   {
+    stackArray=nullptr;
+   }
+   stackSize=obj.stackSize;
+
+   //for copying the content of stack object into the new stack
+   for(int i=0;stackSize>i;i++)
+   {
+    stackArray[i]=obj.stackArray[i];
+   }
+   top=obj.top;
+}
+
+//Destructor
+IntStack::~IntStack
+{
+  delete [] stackArray;
+}
+
+//for pushing the values on the stack
+void IntStack::push(int num)
+{
+  if(IsFull())
+  {
+    cout<<"The stack is Full"<<endl;
+  }
+  else
+  {
+    top++;
+    stackArray[top]=num;
+  }
+}
+
+//for poping the values of the stack
+void IntStack::pop(int &num)
+{
+    if(isEmpty())
+    {
+        cout<<"The stack is empty"<<endl;
+    }
+    else
+    {
+        num=stackArray[top];
+        top--;
+    }
+}
+
+//for checking the stack is empty or not
+void IntStack::isEmpty() const
+{
+  bool status;  
+  if(top==-1)
+  status=true;
+  else
+  status=false;
+retturn status;
+}
+
+//for checking the stack is full or not
+void IntStack::IsFull() const
+{
+  bool status;  
+  if(top==stackSize-1)
+  status=true;
+  else
+  status=false;
+retturn status;
+}
