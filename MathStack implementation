@@ -1,0 +1,51 @@
+#include "MathStack.h"
+
+//add function of the mathstack class for adding the last two elements
+void MathStack::add()
+{
+    int num,sum;
+    pop(num);
+    pop(sum);
+    sum+=num;
+    push(sum);
+} 
+
+//for suntracting the second last value from thr last value of the stack
+void MathStack::sub()
+{
+    int num,diff;
+    pop(num);
+    pop(diff);
+    diff-=num;
+    push(diff);
+}
+
+//for multiplying the last two values of the stack and pushing the product on the stack
+void MathStack::mulp()
+{
+  int num,mulp;
+  pop(mulp);
+  pop(num);
+   mulp*=num;
+   push(mulp);   
+}
+
+//for dividing the last two values of the stack 
+void MathStack::divid()
+{
+    int num,divid;
+    pop(divid);
+    pop(num);
+    divid/=num;
+    push(divid);
+}
+
+//for taking the mod of last two values of the stack
+void Mathstack::mod()
+{
+    int num,mod;
+    pop(mod);
+    pop(num);
+    mod%=num;
+    push(mod);
+}
