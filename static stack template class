@@ -1,0 +1,116 @@
+#ifndef STACK_H
+#define STACK_H
+#include<iostream>
+using name space std ;
+template<class T>
+ class stack
+ {
+    private:
+    T*stackArray;
+    int stackSize;
+    int top;
+    public:
+    //constructor
+    stack(int);
+    //copy constructor
+    stack(int stack &);
+    //Destructor
+    ~stack( );
+   //stack operaions
+   void push(T);
+   void pop(T&);
+   void IsFull();
+   void IsEmpty();
+
+ };
+
+ //constructor defination
+ template <class T>
+ void stack<T>::stack(int size)
+ {
+   stackArray=new T[size];
+   stackSize=size;
+   top=-1;
+ }
+
+ //copy constructor defination
+ template<class T>
+ void stack<T>::stack(const stack& obj)
+{
+    if(obj.stackSize>0)
+     {
+       stackArray=new T[obj.stackSize];
+     }
+     else
+     {
+        stackArray=nullptr;
+     }
+     stackSize=obj.stackSize;
+     for(int i=0;i<stackSize;i++)
+     stackArray[i]=obj.stackArray[i];
+    top=obj.top;
+}
+
+//Destructor defination
+template<class T>
+stack<T>::~stack()
+{
+  if (stackSize>0)
+  delete [] stackArray;
+}
+
+//push function defination 
+template<class T>
+void stack<T>::push(T item )
+{
+  if(IsFull())
+  {
+    cout<<"The stack is full"<<endl;
+  }
+  else
+  {
+    top++; 
+    stackArray[top]=item;
+  }
+}
+
+//pop function defination
+template<class T>
+void stack<T>::pop( T& item)
+{
+    if(IsEmpty())
+    {
+        cout<<"The stack is empty"<<endl;
+    }
+    else
+    {
+        item=stackArray[top];
+        top--;
+    }
+}
+
+//isfull function defination
+template<class T>
+void stack<T>::IsFull()
+{
+    bool status;
+    if(top==stackSize-1)
+     status=1;
+    else
+    status=0;
+    return status;
+
+} 
+
+//isEmpty function defination
+template<class T>
+void stack<T>::IsEmpty()
+{
+    bool status;
+    if(top= -1 )
+     status=1;
+    else
+    status=0;
+    return status;
+} 
+#endif
