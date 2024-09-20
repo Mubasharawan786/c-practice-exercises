@@ -1,0 +1,82 @@
+#include<iostream>
+#include"stack.h"
+using namespace std;
+//constants for menu choices
+const int push_choice=1;
+const int pop_choice=2;
+const int Quit_choice=3;
+//function prototypes
+void menu(int &);
+void getStackSize(int &);
+void pushItem(stack<string>&);
+void popItem(stack<string>&);
+
+int main()
+{
+  int stackSize;
+  int choice;
+  getStackSize(stackSize);
+  stack<string>stack(stackSize);
+  do
+  {
+   menu(choice);
+   if(choice!=Quit_choice)
+   {
+     switch(choice)
+     {
+         case push_choice:
+         pushItem(stack);
+         break;
+         case pop_choice:
+         pop_choice(stack);
+      }
+   }  
+  }(choice!=Quit_choice);
+  return 0;
+}
+
+//defining the get Stack size function
+void getStackSize(int &size)
+{
+    cout<<"How big should I make the stack"<<endl;
+    cin>>size;
+    while(size<1 )
+    {
+        cout<<"Enter 1 or greater:"<<endl;
+        cin>>size;
+    }
+}
+
+//defining the menu function
+void menu (int &choice)
+{
+ cout<<"What do you want to do"<<endl;
+ cout<<push_choice<<"-Push an item onto the stack"<<endl;
+ cout<<pop_choice<<"-Pop an item off the stack"<<endl;   
+ cout<<"Enter your choice"<<end;
+ cin>>choice;   
+ while(choice<0||choice>Quit_choice)
+ {
+    cout<<"Enter a valid choice"<<endl;
+    cin>>choice;
+ }
+}
+
+//defining the push function of the stack
+void pushItem(stack<string> &stack)
+{
+ string item;
+ cin.ignore; 
+ cout<<"Enter an item:"<<endl;
+ getline(cin,item);
+ stack.push(item);
+}
+
+//defining pop function for poping the items from the stack
+void popItem(stack<string> &stack)
+{
+    string item="";
+    stack.pop(item);
+    if(item!="")
+    cout<<item<<" was poped"<<endl;
+}
