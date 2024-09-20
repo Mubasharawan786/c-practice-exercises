@@ -11,6 +11,7 @@ void getStackSize(int &);
 void pushItem(stack<string>&);
 void popItem(stack<string>&);
 
+
 int main()
 {
   int stackSize;
@@ -28,10 +29,10 @@ int main()
          pushItem(stack);
          break;
          case pop_choice:
-         pop_choice(stack);
+         popItem(stack);
       }
    }  
-  }(choice!=Quit_choice);
+  }while(choice!=Quit_choice);
   return 0;
 }
 
@@ -53,7 +54,7 @@ void menu (int &choice)
  cout<<"What do you want to do"<<endl;
  cout<<push_choice<<"-Push an item onto the stack"<<endl;
  cout<<pop_choice<<"-Pop an item off the stack"<<endl;   
- cout<<"Enter your choice"<<end;
+ cout<<"Enter your choice"<<endl;
  cin>>choice;   
  while(choice<0||choice>Quit_choice)
  {
@@ -66,7 +67,7 @@ void menu (int &choice)
 void pushItem(stack<string> &stack)
 {
  string item;
- cin.ignore; 
+ cin.ignore(); 
  cout<<"Enter an item:"<<endl;
  getline(cin,item);
  stack.push(item);
