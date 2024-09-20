@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 #include<iostream>
-using name space std ;
+using namespace std ;
 template<class T>
  class stack
  {
@@ -11,22 +11,22 @@ template<class T>
     int top;
     public:
     //constructor
-    stack(int);
+    stack(int size);
     //copy constructor
-    stack(int stack &);
+    stack(  const stack &obj);
     //Destructor
     ~stack( );
    //stack operaions
    void push(T);
    void pop(T&);
-   void IsFull();
-   void IsEmpty();
+   bool IsFull();
+   bool IsEmpty();
 
  };
 
  //constructor defination
  template <class T>
- void stack<T>::stack(int size)
+  stack<T>::stack(int size)
  {
    stackArray=new T[size];
    stackSize=size;
@@ -35,7 +35,7 @@ template<class T>
 
  //copy constructor defination
  template<class T>
- void stack<T>::stack(const stack& obj)
+  stack<T>::stack(const stack& obj)
 {
     if(obj.stackSize>0)
      {
@@ -55,7 +55,6 @@ template<class T>
 template<class T>
 stack<T>::~stack()
 {
-  if (stackSize>0)
   delete [] stackArray;
 }
 
@@ -91,7 +90,7 @@ void stack<T>::pop( T& item)
 
 //isfull function defination
 template<class T>
-void stack<T>::IsFull()
+bool stack<T>::IsFull()
 {
     bool status;
     if(top==stackSize-1)
@@ -104,10 +103,10 @@ void stack<T>::IsFull()
 
 //isEmpty function defination
 template<class T>
-void stack<T>::IsEmpty()
+bool stack<T>::IsEmpty()
 {
     bool status;
-    if(top= -1 )
+    if(top==-1 )
      status=1;
     else
     status=0;
