@@ -1,5 +1,5 @@
-ifndef DYNINTSTACK_H
-define DYNINTSTACK_H
+#ifndef DYNINTSTACK_H
+#define DYNINTSTACK_H
 class DynIntStack
 {
     private:
@@ -9,12 +9,12 @@ class DynIntStack
         int value;
         stackNode*next;
     };
-  //constructor
     stackNode*top;
     public:
-    DynIntStack()
+    //constructor
+	DynIntStack()
     {
-        top=nullptr
+        top=nullptr;
     };
     //Destructor
     ~DynIntStack();
@@ -24,3 +24,4 @@ class DynIntStack
     bool IsEmpty();    
 }; 
 #endif
+ 

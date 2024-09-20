@@ -1,5 +1,5 @@
 #include<iostream>
-#include"DynIntStack.h"
+#include "DynIntStack.h"
 using namespace std;
 //Destrucot defination
 DynIntStack::~DynIntStack()
@@ -59,4 +59,4 @@ bool DynIntStack::IsEmpty()
    status=false;
  return status;
 }
- 
+
