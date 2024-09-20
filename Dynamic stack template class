@@ -1,0 +1,93 @@
+#ifndef DYNINTSTACK_H
+#define DYNINTSTACK_H
+#include<iostream>
+using namespace std;
+template<class T>
+class DynIntStack
+{
+    private:
+    //structor for stack node
+    struct stackNode
+    {
+        T value;
+        stackNode*next;
+    };
+    stackNode*top;
+    public:
+    //constructor
+	DynIntStack()
+    {
+        top=nullptr;
+    };
+    //Destructor
+    ~DynIntStack();
+    //stack operations
+    void push(T);
+    void pop(T&);
+    bool IsEmpty();    
+}; 
+
+//Destrucot defination
+cltemplate<class T>
+DynIntStack<T>::~DynIntStack()
+{
+    stackNode*nodePtr=nullptr;
+    stackNode*nextNode =nullptr;
+    nodePtr=top;
+    while(nodePtr!=nullptr)
+    {
+        nextNode=nodePtr->next;
+        delete nodePtr;
+        nodePtr=nextNode;
+    }
+} 
+
+//Defining the push function for the dynamic stack class
+template<class T>
+void DynIntStack<T>::push(T num)
+{
+  stackNode*newNode= new stackNode;
+  newNode->value=num;
+  if(IsEmpty())
+  {
+    top=newNode;
+    newNode->next=nullptr;
+  }
+  else
+  {
+    newNode->next=top;
+    top=newNode;
+  }
+}
+
+//DefininG the pop function of the Dynamic stack class
+template<class T>
+void DynIntStack<T>::pop(T&num)
+{
+    stackNode*temp=nullptr;
+    if(IsEmpty())
+    {
+        cout<<"The stack is empty."<<endl;
+    }
+    else
+    {
+        num=top->value;
+        temp=top->next;
+        delete top;
+        top=temp;
+    }
+}
+
+//defining the is empty function of the dynamic stack class
+template<class T>
+bool DynIntStack<T>::IsEmpty()
+{
+  bool status;
+  if(!top )
+   status=true;
+  else
+   status=false;
+ return status;
+}
+#endif
+ 
