@@ -27,7 +27,8 @@ class IntQueue
     void clear();
 };
 //constructor defination
-  IntQueue::IntQueue(T s)
+template<class T>
+  IntQueue<T>::IntQueue(T s)
 {
     queueArray=new T[s];
     queueSize=s;
@@ -36,7 +37,8 @@ class IntQueue
     numItems=0;
 }
 //copy construtor
-  IntQueue::IntQueue(const IntQueue &obj)
+ template<class T>
+  IntQueue<T>::IntQueue(const IntQueue &obj)
 {
     queueArray=new T[obj.queueSize];
     queueSize=obj.queueSize;
@@ -49,12 +51,14 @@ class IntQueue
     }
 }     
 //Destructor defination
-IntQueue::~IntQueue()
+template<class T>
+IntQueue<T>::~IntQueue()
 {
     delete []queueArray;
 }
 //Enqueue defination
-void IntQueue::enqueue(T num)
+template<class T>
+void IntQueue<T> ::enqueue(T num)
 {
     if(IsFull())
     {
@@ -68,7 +72,8 @@ void IntQueue::enqueue(T num)
     }
 }
 //Dequeue defination
-void IntQueue::dequeue(T&num)
+template<class T>
+void IntQueue<T>::dequeue(T&num)
 {
     if(IsEmpty())
     {
@@ -82,7 +87,8 @@ void IntQueue::dequeue(T&num)
     }
 }
 //IsEmpty function defination
-bool IntQueue::IsEmpty()const
+template<class T>
+bool IntQueue<T>::IsEmpty()const
 {
     bool status;
     if(numItems)
@@ -92,7 +98,8 @@ bool IntQueue::IsEmpty()const
     return status;    
 } 
 //IsFull function defination
- bool IntQueue::IsFull()const
+template<class T>
+ bool IntQueue<T>::IsFull()const
 {
     bool status;
     if(numItems<queueSize)
@@ -102,7 +109,8 @@ bool IntQueue::IsEmpty()const
     return status;    
 }
 //clear function defination
-void IntQueue::clear()
+template<class T>
+void IntQueue<T>::clear()
 {
     front= -1;
     rear= -1;
