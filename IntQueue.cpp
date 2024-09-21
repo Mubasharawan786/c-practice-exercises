@@ -1,4 +1,4 @@
-#include<iostream>
+ #include<iostream>
 #include "IntQueue.h"
 using namespace std;
 //constructor defination
@@ -31,7 +31,7 @@ IntQueue::~IntQueue()
 //Enqueue defination
 void IntQueue::enqueue(int num)
 {
-    if(isFull())
+    if(IsFull())
     {
         cout<<"The queue is full\n";
     }
@@ -45,7 +45,7 @@ void IntQueue::enqueue(int num)
 //Dequeue defination
 void IntQueue::dequeue(int&num)
 {
-    if(isEmpty())
+    if(IsEmpty())
     {
         cout<<"The queue is empty\n";
     }
@@ -57,7 +57,7 @@ void IntQueue::dequeue(int&num)
     }
 }
 //IsEmpty function defination
-bool IntQueue::isEmpty()const
+bool IntQueue::IsEmpty()const
 {
     bool status;
     if(numItems)
@@ -67,7 +67,7 @@ bool IntQueue::isEmpty()const
     return status;    
 } 
 //IsFull function defination
- bool IntQueue::isFull()const
+ bool IntQueue::IsFull()const
 {
     bool status;
     if(numItems<queueSize)
@@ -95,7 +95,7 @@ int main()
     cout<<"Now attempting to enqueue one more item\n";
     obj.enqueue(Max_values);
     cout<<"Retriving all the items of the queue\n";
-    while(!obj.isEmpty())
+    while(!obj.IsEmpty())
     {
         int value;
         obj.dequeue(value);
