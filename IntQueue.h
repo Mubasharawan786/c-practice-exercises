@@ -18,7 +18,7 @@ class IntQueue
     ~IntQueue( );
     //Queue operations
     void enqueue(int);
-    void enqueue(int&);
+    void dequeue(int&);
     bool IsEmpty()const;
     bool IsFull()const;
     void clear();
