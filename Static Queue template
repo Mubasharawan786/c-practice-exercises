@@ -1,9 +1,9 @@
-#ifndef INTQUEUE_H
-#define INTQUEUE_H
+#ifndef  QUEUE_H
+#define   QUEUE_H
 #include<iostream>
 using namespace std;
 template<class T>
-class IntQueue 
+class  Queue 
 {
     private:
     T*queueArray;
@@ -13,12 +13,11 @@ class IntQueue
     T numItems;
     public:
     //constructor
-    IntQueue(T);
+     Queue(T);
     //copy constructor
-    IntQueue(const  IntQueue&);
+    Queue(const  Queue&);
     //Destructor
-    //constructor
-    ~IntQueue( );
+    ~Queue( );
     //Queue operations
     void enqueue(T);
     void dequeue(T&);
@@ -28,7 +27,7 @@ class IntQueue
 };
 //constructor defination
 template<class T>
-  IntQueue<T>::IntQueue(T s)
+   Queue<T>:: Queue(T s)
 {
     queueArray=new T[s];
     queueSize=s;
@@ -38,7 +37,7 @@ template<class T>
 }
 //copy construtor
  template<class T>
-  IntQueue<T>::IntQueue(const IntQueue &obj)
+   Queue<T>:: Queue(const  Queue &obj)
 {
     queueArray=new T[obj.queueSize];
     queueSize=obj.queueSize;
@@ -52,13 +51,13 @@ template<class T>
 }     
 //Destructor defination
 template<class T>
-IntQueue<T>::~IntQueue()
+Queue<T>::~Queue()
 {
     delete []queueArray;
 }
 //Enqueue defination
 template<class T>
-void IntQueue<T> ::enqueue(T num)
+void Queue<T> ::enqueue(T num)
 {
     if(IsFull())
     {
@@ -73,7 +72,7 @@ void IntQueue<T> ::enqueue(T num)
 }
 //Dequeue defination
 template<class T>
-void IntQueue<T>::dequeue(T&num)
+void  Queue<T>::dequeue(T&num)
 {
     if(IsEmpty())
     {
@@ -88,7 +87,7 @@ void IntQueue<T>::dequeue(T&num)
 }
 //IsEmpty function defination
 template<class T>
-bool IntQueue<T>::IsEmpty()const
+bool  Queue<T>::IsEmpty()const
 {
     bool status;
     if(numItems)
@@ -99,7 +98,7 @@ bool IntQueue<T>::IsEmpty()const
 } 
 //IsFull function defination
 template<class T>
- bool IntQueue<T>::IsFull()const
+ bool  Queue<T>::IsFull()const
 {
     bool status;
     if(numItems<queueSize)
@@ -110,10 +109,28 @@ template<class T>
 }
 //clear function defination
 template<class T>
-void IntQueue<T>::clear()
+void  Queue<T>::clear()
 {
     front= -1;
     rear= -1;
     numItems=0;
 }
 #endif
+
+int main()
+{
+    	int size=3,num;
+	Queue<int> obj(size);
+	for(int i=0;i<size+1;i++)
+	{
+	num=i+1;
+	obj.enqueue(num);	
+	}
+    	for(int i=0;i<size+1;i++)
+	{
+	obj.dequeue( num);
+	cout<<num<<endl;
+	}
+	return 0;
+	 
+}

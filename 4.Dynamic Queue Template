@@ -1,0 +1,126 @@
+#ifndef DYNAMICQUEUE_H
+#define DYNAMICQUEUE_H
+#include<iostream>
+using namespace std;
+template<class T>
+class DynQueue
+{
+	private:
+	struct queueNode
+	{
+		T value;
+		queueNode*next;
+	};
+	queueNode*front;
+	queueNode*rear;
+	int numItems ; 	
+	public:	
+	//constructor
+	 DynQueue();
+	 //Destructor
+	 ~DynQueue(); 
+	//Queue operations
+	void enqueue(T);
+	void dequeue(T &);
+	bool isEmpty()const;
+	void clear();
+}; 
+
+//constructor
+template<class T>
+DynQueue<T>::DynQueue() 
+	{
+	  front=nullptr;
+	  rear=nullptr;
+	  numItems=0;	
+	}
+
+//Destructor
+template<class T>
+	DynQueue<T>::~DynQueue( ) 
+	{
+	clear();
+	front=nullptr;
+	rear=nullptr;
+		}
+  
+  //Enqueue operation
+template<class T>
+void DynQueue<T>::enqueue(T item) 
+	{
+	 queueNode *newNode ;
+	 newNode->value=item;
+	 newNode->next=nullptr;
+	 if(isEmpty())
+	 {
+	  	front=newNode;
+	     rear=newNode;
+	    }	
+	 else
+	 {
+	 	rear->next=newNode;
+	 	rear=newNode;
+		} 	  
+	 numItems++;	
+	}
+	
+//Dequeque operation
+template<class T>
+void DynQueue<T>::dequeue(T &item ) 
+	{
+	 queueNode*temp=nullptr;
+	 if(isEmpty())
+	 { 
+	  cout<<"The queuue is empty"<<endl;
+	    }	
+	 else
+	 { 
+	 item=front->value;
+	  temp=front;
+	  front=front->next;
+	  delete temp;
+		} 	  
+	 numItems--;	
+	}
+  
+  //IsEmpty operation
+  template<class T>
+  bool DynQueue<T>:: isEmpty()const 
+  {
+  	 return (numItems==0);
+  }
+  
+  //Clear operation
+  template<class T>
+  void DynQueue<T>::clear()
+  {
+  	 T var;
+  	 while(!isEmpty())
+     dequeue(var);
+	 }
+#endif
+ 
+ int main()
+ {
+ 	DynQueue<int>obj1;
+ 	int v;
+ 	cout<<"Enter the number you wana save\n";
+ 	cin>>v;
+ 	while(v<0 )
+     {
+    cout<<"Invalid input number should not be nagitave\n";
+	cout<<"Enter the number you wana save \n";
+ 	cin>>v;     	
+	
+		 }	
+ 	obj1.enqueue(v);
+ 	obj1.dequeue(v);
+ 	cout<<"The number u enter is:"<<v<<endl; 
+ 	DynQueue<string>obj2;
+ 	string n;
+ 	cout<<"Enter the Name you wana save\n";
+ 	cin>>n;
+ 	obj2.enqueue(n);
+ 	obj2.dequeue(n);
+ 	cout<<n;
+	   }	  
