@@ -1,5 +1,6 @@
 #ifndef DYNAMICTEMPLATE_H
 # define DYNAMICTEMPLATE_H
+#include<new>
 #include<iostream>
 using namespace std;
 
@@ -48,19 +49,27 @@ DynStack<T>::~DynStack()
 template<class T>
 void DynStack<T>::push(T item)
 {
-    stackNode* newNode = new stackNode;
-    newNode->value = item;
+    try
+    {
+        stackNode* newNode = new stackNode;
+        newNode->value = item;
 
-    if (isEmpty())
-    {
-        top = newNode;
-        newNode->next = nullptr;
+     if (isEmpty())
+     {
+         top = newNode;
+         newNode->next = nullptr;
+        }
+     else
+     {
+         newNode->next = top;
+         top = newNode;
+        }
     }
-    else
+    catch(const bad_alloc&e)
     {
-        newNode->next = top;
-        top = newNode;
+        cout<<"Error:Memory is not allocated "<<e.what()<<endl;
     }
+    
 }
 
 // Pop function of stack
