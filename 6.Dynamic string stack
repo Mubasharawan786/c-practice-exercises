@@ -1,0 +1,86 @@
+#ifndef STRINGSTACK_H
+# define STRINGSTACK_H
+#include<iostream>
+using namespace std;
+class stringStack
+{
+    private:
+    struct stackNode
+    {
+        string value;
+        stackNode*next;
+    };
+    stackNode*top;
+    public:
+    //constructor
+    stringStack()
+    {
+     top=nullptr;   
+    };
+    //Destructor
+    ~stringStack();
+    //stack operations
+    void push(string);
+    void pop(string &);
+    void clear();
+    bool isEmpty();
+} 
+
+//Destructor 
+stringStack( )
+{
+   clear();
+   top=nullptr;
+   }
+//Push operation 
+void push(string s)
+{
+    stackNode*newNode=new stackNode;
+    newNode->value=s;
+    newNode->next=nullptr;
+    if(top==nullptr)
+    {
+        top=newNode;
+    }
+    else
+    {
+        newNode->next=top;
+        top=newNode;
+    }
+}    
+
+//Pop operation
+void pop(string &s)
+{
+    stackNode*temp;
+    temp=top ;
+    s=top->value;
+    top=top->next;
+    delete temp;
+}
+
+//IsEmpty operation
+bool isEmpty()
+{
+    return(top==nullptr);
+}
+
+//Clear operation
+void clear()
+{
+    int val ;//for storing the deleted value for later use
+    while(!top)
+    pop(val); 
+}
+#endif
+int main()
+{
+  string info;
+  cout<<"Enter your name\n";
+  get(cin,info)
+  stringStack obj;
+  obj.push(info);
+  obj.pop(info);
+  cout<<"Your name is "<<info<<endl;
+
+}
