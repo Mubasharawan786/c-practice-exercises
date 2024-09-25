@@ -1,6 +1,7 @@
 #ifndef STRINGSTACK_H
 # define STRINGSTACK_H
 #include<iostream>
+#include<string>
 using namespace std;
 class stringStack
 {
@@ -24,16 +25,16 @@ class stringStack
     void pop(string &);
     void clear();
     bool isEmpty();
-} 
+} ;
 
 //Destructor 
-stringStack( )
+stringStack::~stringStack( )
 {
    clear();
    top=nullptr;
    }
 //Push operation 
-void push(string s)
+void stringStack::push(string s)
 {
     stackNode*newNode=new stackNode;
     newNode->value=s;
@@ -50,7 +51,7 @@ void push(string s)
 }    
 
 //Pop operation
-void pop(string &s)
+void stringStack::pop(string &s)
 {
     stackNode*temp;
     temp=top ;
@@ -60,24 +61,24 @@ void pop(string &s)
 }
 
 //IsEmpty operation
-bool isEmpty()
+bool stringStack::isEmpty()
 {
     return(top==nullptr);
 }
 
 //Clear operation
-void clear()
+void stringStack::clear()
 {
-    int val ;//for storing the deleted value for later use
+    string val ;//for storing the deleted value for later use
     while(!top)
-    pop(val); 
+    pop( val); 
 }
 #endif
 int main()
 {
   string info;
   cout<<"Enter your name\n";
-  get(cin,info)
+  getline(cin,info);
   stringStack obj;
   obj.push(info);
   obj.pop(info);
