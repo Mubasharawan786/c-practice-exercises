@@ -1,19 +1,116 @@
 #ifndef MATHSTACK_H
 #define MATHSTACK_H
-#include "DynIntStack.h"
 #include<iostream>
 using namespace std;
-class MathStack:public DynIntStack
+
+
+class DynIntStack
 {
- //constructor
-MathStack(): DynIntStack() {} 
- add(); 
-  sub();
-  mult();
-  div();
-int addAll();
-int multAll();
-} ;
+    private:
+    //structor for stack node
+    struct stackNode
+    {
+        int value;
+        stackNode*next;
+    };
+    stackNode*top;
+    public:
+    //constructor
+	DynIntStack()
+    {
+        top=nullptr;
+    };
+    //Destructor
+    ~DynIntStack();
+    //stack operations
+    void push(int);
+    void pop(int&);
+    bool IsEmpty();    
+}; 
+
+
+
+//Destrucot defination
+DynIntStack::~DynIntStack()
+{
+    stackNode*nodePtr=nullptr;
+    stackNode*nextNode =nullptr;
+    nodePtr=top;
+    while(nodePtr!=nullptr)
+    {
+        nextNode=nodePtr->next;
+        delete nodePtr;
+        nodePtr=nextNode;
+    }
+} 
+
+//Defining the push function for the dynamic stack class
+void DynIntStack::push(int num)
+{
+  stackNode*newNode= new stackNode;
+  newNode->value=num;
+  if(IsEmpty())
+  {
+    top=newNode;
+    newNode->next=nullptr;
+  }
+  else
+  {
+    newNode->next=top;
+    top=newNode;
+  }
+}
+
+//DefininG the pop function of the Dynamic stack class
+void DynIntStack::pop(int&num)
+{
+    stackNode*temp=nullptr;
+    if(IsEmpty())
+    {
+        cout<<"The stack is empty."<<endl;
+    }
+    else
+    {
+        num=top->value;
+        temp=top->next;
+        delete top;
+        top=temp;
+    }
+}
+
+//defining the is empty function of the dynamic stack class
+bool DynIntStack::IsEmpty()
+{
+  bool status;
+  if(!top )
+   status=true;
+  else
+   status=false;
+ return status;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+class MathStack: public  DynIntStack   
+  {
+  	
+  	 public:
+     void add(); 
+     void sub();
+     void mult();
+     void div();
+     void addAll();
+     void multAll();
+    };
 
 //Addition Operation
 void MathStack::add( )
@@ -51,50 +148,58 @@ void MathStack::mult()
 //Divide Operation
 void MathStack::div()
 {
- int num ;
- int div;
- pop(div);
- pop(num);
- div/=num;
- push(div);
+     int num ;
+     int div;
+     pop(div);
+     pop(num);
+ if(num==0)
+ {
+ 	cout<<"Division by zero is not allowed\n";
+ }
+ else
+ {
+     
+      div/=num;
+      push(div); 	
+ }
+
 }
 
 //Addition of All values of MathStack
-void addAll()
-{
- int num ;
- int addAll;
- while(!top)
- {
-  pop(addAll);
-  pop(num);
-  addAll+=num;
-  push(addAll);
- }
- 
-}
+void MathStack::addAll()
+  {
+     int num ;
+     int addAll=0;
+      while(!IsEmpty())
+     {
+         pop(num);
+         addAll+=num;
+        }
+        push(addAll);
+    } 
 
 //Multiplicayion of All the values of the MathStack
-void multAll()
-{
- int num ;
- int multAll;
- while(!top)
-  {
-      pop(multAll);
-      pop(num);
-     multAll*=num;
-     push(multAll);
+void MathStack::multAll()
+   {
+     int num ;
+     int multAll=1;
+     while(!IsEmpty() )
+      {
+         pop(num);
+         multAll*=num;
+        }
+      push(multAll); 
     }
-}
 #endif
 
 //Driver program for testing 
 int main()
 {
+	int i=0;
  MathStack obj;
- for(int i=1;i<6;i++)
+ for(i=1;i<6;i++)
  obj.push(i);
  obj.addAll();
- obj.dsiplay();
+ obj.pop(i);
+ cout<<i<<endl;
 }
