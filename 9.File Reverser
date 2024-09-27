@@ -1,0 +1,33 @@
+#include<stack>
+#include<list>
+#include<fstream >
+#include<iostream> 
+using namespace std;
+int main()
+{
+	stack<char,list<char>>obj;
+	  ofstream textFile("mom.txt");
+  textFile<<"I love to deal with files  ";
+  cout<<"Data is save successfully\n";
+  textFile.close();		
+
+	char s;
+	ifstream inputFile("mom.txt");
+	while( inputFile.get(s))
+    {
+    	obj.push(s);
+		cout<<s;	
+	}
+	cout<<endl;
+	inputFile.close();
+	ofstream secondFile("secondFile.txt");
+	while(!obj.empty())
+	{
+	 s=obj.top();
+	obj.pop();
+	secondFile<<s;	
+    cout<<s;
+	}
+ 
+  secondFile.close();	
+}
