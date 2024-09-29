@@ -1,0 +1,38 @@
+#include<queue>
+#include<string>
+#include<cctype>
+#include<fstream >
+#include<iostream> 
+using namespace std;
+int main()
+{
+	//File is open in write mode to write data in it
+	queue<char>obj;
+	  ofstream textFile("mom.txt");
+  textFile<<"I love to deal with files  ";
+  cout<<"Data is save successfully\n";
+  textFile.close();		
+
+//File is open in read mode to read content in the charter queue
+	char s;
+	ifstream inputFile("mom.txt");
+	while( inputFile.get(s))
+    {
+    	obj.push (s);
+		cout<<s;	
+	}
+	cout<<endl;
+	inputFile.close();
+
+//File in which data is store from the	queue of charaters
+	ofstream secondFile("secondFile.txt");
+	while(s=obj.front())
+	{
+	 s=toupper(s);
+	obj.pop();
+	secondFile<<s;	
+    cout<<s;
+	}
+ 
+  secondFile.close();	
+}
