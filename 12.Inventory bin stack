@@ -1,0 +1,198 @@
+#include<iostream>
+#ifndef DYNAMICTEMPLATE_H
+# define DYNAMICTEMPLATE_H
+#include<new>
+using namespace std;
+class inventory
+{
+   private:
+   int lotNum;
+   int ManufactureDate;
+   int serialNum;
+   public:
+   void set_lotNum(int LNum)
+   {
+     lotNum=LNum;
+    }
+   void set_ManufactureDate(int date)
+   {
+     ManufactureDate=date;
+    }
+   void set_serialNum(int SNum)
+   {
+     serialNum=SNum;
+    } 
+   int get_lotNum()
+   {
+      return lotNum; 
+    }
+   int get_ManufactureDate()
+   {
+    return ManufactureDate;
+   }
+   int get_serialNum()
+   {
+    return serialNum;
+   } 
+};
+
+
+template<class T>
+class DynStack 
+{
+private:
+    struct stackNode
+    {
+        T value;
+        stackNode* next;
+    };
+    stackNode* top;
+   public:	
+    // Constructor
+    DynStack() {
+        top = nullptr;
+    }
+
+    // Destructor
+    ~DynStack();
+
+    // Stack operations
+    void push(T);
+    void pop(T&);
+    bool isEmpty();
+};
+
+// Destructor
+template<class T>
+DynStack<T>::~DynStack()
+{
+    stackNode* nodePtr;
+    stackNode* nextNode;
+    nodePtr = top;
+    while (nodePtr != nullptr)
+    {
+        nextNode = nodePtr->next;
+        delete nodePtr;
+        nodePtr = nextNode;
+    }
+}
+
+// Push function of stack
+template<class T>
+void DynStack<T>::push(T item)
+{
+    try
+    {
+        stackNode* newNode = new stackNode;
+        newNode->value = item;
+
+     if (isEmpty())
+     {
+         top = newNode;
+         newNode->next = nullptr;
+        }
+     else
+     {
+         newNode->next = top;
+         top = newNode;
+        }
+    }
+    catch(const bad_alloc&e)
+    {
+        cout<<"Error:Memory is not allocated "<<e.what()<<endl;
+    }
+    
+}
+
+// Pop function of stack
+template<class T>
+void DynStack<T>::pop(T& item)
+{
+    if (isEmpty())
+    {
+        cout << "The stack is empty" << endl;
+    }
+    else
+    {
+        item = top->value;
+        stackNode* temp = top->next;
+        delete top;
+        top = temp;
+    }
+}
+
+// isEmpty function
+template<class T>
+bool DynStack<T>::isEmpty()
+{
+    return (top == nullptr);
+}
+#endif
+
+
+int main()
+  {
+     DynStack<inventory> myStack;
+     const int Adding_part=1;
+     const int Takking_part=2;
+     const int Quit=3;
+     int choice=0;
+     inventory part;
+      do
+      {
+         cout<<"Enter your choice"<<endl;
+         cout<<"1.Adding a part in the inventory"<<endl;
+         cout<<"2.Taking a part from the inventory"<<endl;
+         cout<<"3.Quit the program"<<endl;
+         cin>>choice;
+          if(choice==Adding_part)
+         {
+             int Serial_Number,Manufacture_Date,lot_Number;   	
+             cout<<"Enter the serial Number of the part"<<endl;
+             cin>>Serial_Number;
+             part.set_serialNum(Serial_Number);
+             cout<<"Enter the Manufacture Date of the part"<<endl;
+             cin>>Manufacture_Date;
+             part.set_ManufactureDate(Manufacture_Date);
+             cout<<"Enter the lot Number of the part"<<endl;
+             cin>>lot_Number;
+             part.set_lotNum(lot_Number);
+             myStack.push(part);    
+            } 
+         if(choice==Takking_part)
+         {
+             if(myStack.isEmpty())
+             {
+                 cout<<"Inventory is out of stock"<<endl;
+               }
+             else
+             {
+                 myStack.pop(part);
+                 cout<<"Serial Number: "<<part.get_serialNum();
+                 cout<<endl;
+		         cout<<"Manufacture Date: "<<part.get_ManufactureDate();
+                  cout<<endl;
+		         cout<<"Lot Number: "<<part.get_lotNum();
+                 cout<<endl;
+                }
+            }
+        }while(choice!=3);
+       if(choice==Quit)
+      {
+         int i=1;
+         while(!myStack.isEmpty())
+         {
+             myStack.pop(part);
+             cout<<i<<" part details:"<<endl;
+			 cout<<"Serial Number: "<<part.get_serialNum();
+             cout<<endl;
+			 cout<<"Manufacture Date: "<<part.get_ManufactureDate();
+             cout<<endl;
+			 cout<<"Lot Number: "<<part.get_lotNum();
+             cout<<endl;
+			 i++;
+            }
+        }   
+	return 0;
+
+}

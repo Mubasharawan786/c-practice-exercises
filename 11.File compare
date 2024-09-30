@@ -1,0 +1,63 @@
+#include<iostream>
+#include<queue>
+#include<fstream>
+#include<string>
+using namespace std;
+bool compare(queue< char>&firstQ, queue< char> &secondQ)
+  {
+  	if(firstQ.size()!=secondQ.size())
+		 {
+		 	return false;
+		 }
+	  char F,S;
+     while(!firstQ.empty()&&!secondQ.empty())
+	 {
+	 	F=firstQ.front();
+	 	firstQ.pop();
+		 S=secondQ.front();
+	 	 secondQ.pop();
+	 	if(F!=S)
+	 	{
+	 	  return false;
+		 }
+	 }  
+	   return true;
+    };
+int main()
+{
+	queue<char>first_queue;
+	queue<char>second_queue;
+	char F1,F2;
+	string file1="mom.txt";
+	string file2="myfile.txt";
+    //Reading data from first file into the queue 
+	ifstream inputFile1("mom.txt");
+	if(!inputFile1)
+	{
+		cout<<"Error:Unable to open file "<<file1<<endl;
+	}
+		while(inputFile1.get(F1))
+	{
+		first_queue.push(F1);
+	}
+	inputFile1.close();
+    //Reading data from second file into the queue
+	ifstream inputFile2("myfile.txt");
+    if(!inputFile2)
+	{
+		cout<<"Error:Unable to open file "<<file2<<endl;
+	}
+	while(inputFile2.get(F2))
+	{
+		second_queue.push(F2);
+	}
+	inputFile2.close();
+	if(compare(first_queue,second_queue))
+	{
+		cout<<"Files are identical";
+	}
+	else
+	{
+		cout<<"Files are different";
+	}
+}
