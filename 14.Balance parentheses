@@ -1,0 +1,42 @@
+#include<string>
+#include<iostream>
+#include<stack>
+using namespace std;
+bool balnceParenthese(const string &exp)
+{
+    stack<char>stor;
+    for(char ch:exp)
+    {
+        if( ch=='(' || ch=='{' || ch=='[' )
+        {
+            stor.push(ch);
+        }
+        else if( ch==')' || ch=='}' || ch==']' )
+        {
+            if(stor.empty())
+            return false;
+            char top=stor.top();
+            stor.pop();
+            if( ( ch==')' && top!='(' ) ||   ( ch=='}' && top!='{' )   ||    ( ch==']' && top!='['  ) )
+            {
+                return false;
+            }
+        }
+
+    }
+};
+int main()
+{
+    string exp;
+    cout<<"Enter a string with  parentheses\n";
+    getline(cin,exp);
+    if(balnceParenthese(exp))
+    {
+        cout<<"parentheses are balanced"<<endl;
+    }
+    else
+    {
+        cout<<"parentheses are not balanced"<<endl;
+    }
+    return 0;
+}

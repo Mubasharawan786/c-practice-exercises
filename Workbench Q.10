@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+int num_times(int[],int,int,int);
+int main()
+{
+  const int size=6;
+  int num[size]={1,2,5,5,5,5};
+  int val=5;
+ int  result=num_times(num,0,5,6);
+ cout<<val <<" is repeated "<<result <<" times in the array";	
+}
+
+int num_times(int array[ ],int startIndex,int value,int size)
+{
+	if(startIndex>=size)
+	{
+	   return 0;	
+	}
+	else if(array[startIndex]==value)
+	{
+	   return 1+ num_times( array, startIndex+1, value, size);	
+	}
+	
+	else
+	{
+		return num_times( array, startIndex+1, value, size);
+	}
+};
