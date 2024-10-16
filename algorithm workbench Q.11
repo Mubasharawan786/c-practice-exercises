@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int largeNum(int[],int,int);
+int largeValue;
+int main()
+{
+  const int size=7;
+  int num[size]={1,2,3,4,5,6,7};
+  int startIndex=0;
+  int result=largeNum(num,startIndex,size);
+  cout<<"The largest number in the array is "<<result<<endl;
+  return 0;
+};
+
+int largeNum(int array[ ],int startIndex,int size)
+{
+	largeValue=array[startIndex];
+	if(startIndex>size)
+     return 1; 
+	else if(array[startIndex+1]<largeValue)
+	{
+	  startIndex++;		
+	}
+	else
+	{
+		largeValue=array[startIndex+1];
+	   return largeNum( array, startIndex+1,size);	
+	   }
+	
+};
