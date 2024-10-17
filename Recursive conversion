@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+void sign(int n); 
+/* { 
+ int num=n;
+     while (num > 0) 
+     {
+     	 cout << "No Parking\n"; 
+     num--;
+	 }
+         
+ }*/
+int main()
+{
+  sign(5);	
+}  
+
+void sign(int n)
+ {
+ 	if(n==0||n<0)
+ 	return  ;
+ 	else if(n>0)
+ 	{
+ 		cout<<"No Parking \n";
+ 		sign(n-1);
+	 }
+   }
