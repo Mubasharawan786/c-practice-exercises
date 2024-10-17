@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int factorial(int num)
+{
+	int result=1;
+	if (num==0)
+	return result;
+	while(num>=1)
+	{
+		result*=num;
+		num--;
+	}
+};
+int main()
+{
+int val=0;	
+int F=factorial(val);
+cout<<"The  factorial of "<<val<<" is "<<F<<endl;
+return 0;	
+ } 
+ 
